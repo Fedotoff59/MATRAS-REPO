@@ -5,15 +5,11 @@
 <div id="footer">
 	
 	<div class="lft">
-		
-		<div class="logo">
-			<a href=""><img src="<?=SITE_TEMPLATE_PATH?>/i/logo-foot.png" width="111" height="32" alt=""/></a>
-			<div>10 лет успешной работы</div>
-		</div>
-		
-		<div class="copy">
-			&copy; Тёщины матрасы, 2013
-		</div>
+            <?$APPLICATION->IncludeFile(
+                    	"/include/bottom_logo.php",
+                    	Array(),
+                    	Array("MODE"=>"text","NAME"=>"Логотип")
+                    );?>
 		
 	</div><!-- .lft -->
 	
@@ -31,24 +27,26 @@
 		</div>
 		
 		<div class="counter">
-			<div class="item"><img src="<?=SITE_TEMPLATE_PATH?>/files/counter-1.png" alt=""/></div>
-			<div class="item"><img src="<?=SITE_TEMPLATE_PATH?>/files/counter-2.png" alt=""/></div>
-			<div class="clear_fix"></div>
+            <?$APPLICATION->IncludeFile(
+                    	"/include/counters.php",
+                    	Array(),
+                    	Array("MODE"=>"text","NAME"=>"Счетчики")
+                    );?>
+			
 		</div>
-		
-		<div class="dev">
-			Разработка сайта —
-		</div>
-		
+	    <?$APPLICATION->IncludeFile(
+                    	"/include/develop.php",
+                    	Array(),
+                    	Array("MODE"=>"text","NAME"=>"Разработка")
+                    );?>		
 	</div><!-- .info -->
 	
 	<div class="contact">
-		<div class="phone">
-			<span>8 495</span> 222 18 59<br/>
-			<span>8 903</span> 165 77 81<br/>
-			<span>8 905</span> 517 65 97
-		</div>
-		<a href="">info@teshenimatrasi.ru</a>
+            <?$APPLICATION->IncludeFile(
+                    	"/include/bottom_contacts.php",
+                    	Array(),
+                    	Array("MODE"=>"text","NAME"=>"Контакты")
+                    );?>
 	</div><!-- .contact -->
 	
 	<div class="clear_fix"></div>

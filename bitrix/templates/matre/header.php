@@ -27,17 +27,13 @@ $curPage = $APPLICATION->GetCurPage(true);
 		<div class="wrap">
 			
 			<div class="menu">
-				<ul>
-					<li><a href="">Главная</a></li>
-					<li class="sep"></li>
-					<li><a href="">О компании</a></li>
-					<li class="sep"></li>
-					<li><a href="">Доставка</a></li>
-					<li class="sep"></li>
-					<li><a href="">Оплата</a></li>
-					<li class="sep"></li>
-					<li><a href="">Контактная информация</a></li>
-				</ul>
+                            <?$APPLICATION->IncludeComponent(
+                                "bitrix:menu",
+                                "top_menu",
+                                Array(
+                                    "ROOT_MENU_TYPE" => "top"
+                                    )
+                            );?> 
 				<div class="clear_fix"></div>
 			</div><!-- .menu -->
 			
@@ -71,14 +67,19 @@ $curPage = $APPLICATION->GetCurPage(true);
 	<div class="head wrap">
 		
 		<div class="logo">
-			<a href=""><img src="<?=SITE_TEMPLATE_PATH?>/i/logo.png" width="181" height="51" alt=""/></a>
-			<div>10 лет успешной работы</div>
+                    <?$APPLICATION->IncludeFile(
+                    	"/include/top_logo.php",
+                    	Array(),
+                    	Array("MODE"=>"text","NAME"=>"Логотип")
+                    );?>
 		</div>
 		
 		<div class="phone">
-			<div class="box">
-				<span>8 495</span> 222 18 59
-			</div>
+                    <?$APPLICATION->IncludeFile(
+                    	"/include/top_phone.php",
+                    	Array(),
+                    	Array("MODE"=>"text","NAME"=>"Телефон")
+                    );?>
 			<a href="" class="dot" onclick="return false;">Перезвоните мне</a>
 			<div id="callback" class="form">
 				<form action="#" method="post">
@@ -98,8 +99,11 @@ $curPage = $APPLICATION->GetCurPage(true);
 		</div>
 		
 		<div class="worktime">
-			<div>8 <sup>00</sup> - 23 <sup>00</sup></div>
-			Ежедневно
+                 <?$APPLICATION->IncludeFile(
+                    	"/include/top_time.php",
+                    	Array(),
+                    	Array("MODE"=>"text","NAME"=>"Время работы")
+                );?>
 		</div>
 		
 		<div class="cart">

@@ -3,33 +3,17 @@ $APPLICATION->SetTitle("Матрасы");
 ?> 
     
 <div id="slider">
-	<div class="inner">
-		<ul>
-			
-			<li>
-				<img src="<?=SITE_TEMPLATE_PATH?>/files/slide-1.jpg" alt=""/>
-				<div class="descr">
-					<div class="title">Любые формы <br/>и <span>размеры</span></div>
-					<div class="dis">Скидки до <span>30%</span></div>
-					<a href="" class="detail">Подробнее</a>
-				</div>
-			</li>
-			
-			<li>
-				<img src="<?=SITE_TEMPLATE_PATH?>/files/slide-1.jpg" alt=""/>
-				<div class="descr">
-					<div class="title">Любые формы <br/>и <span>размеры</span></div>
-					<div class="dis">Скидки до <span>30%</span></div>
-					<a href="" class="detail">Подробнее</a>
-				</div>
-			</li>
-			
-		</ul>
-		<div class="clear_fix"></div>
+        <div class="inner">
+            <?$APPLICATION->IncludeFile(
+                        "/include/top_slider.php",
+                    	Array(),
+                    	Array("MODE"=>"text","NAME"=>"Слайдер")
+            );?>
+            <div class="clear_fix"></div>
 	</div>
 	<div class="arrow">
-		<a href="" class="l"></a>
-		<a href="" class="r"></a>
+            <a href="" class="l"></a>
+            <a href="" class="r"></a>
 	</div>
 </div><!-- #slider -->
 
