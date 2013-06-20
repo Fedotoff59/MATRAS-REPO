@@ -31,4 +31,6 @@ class CMelcosoft {
     }
 
 }
+
+define(IB_GOODS_ID, 6);
 ?>

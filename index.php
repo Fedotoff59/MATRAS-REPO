@@ -158,74 +158,52 @@ $APPLICATION->SetTitle("Матрасы");
 <div id="content" class="main">
 	
 	<div class="popular" id="popular">
-		<div class="bg"></div>
-		
-		<h3>популярные товары</h3>
-		
-		<div class="inner">
-			<ul>
-				
-				<li>
-					<div class="img">
-						<img src="<?=SITE_TEMPLATE_PATH?>/files/pop-1.png" alt=""/>
-					</div>
-					<a href="">Season Mix SmartSpring</a>
-					<div class="text">
-						Модель на основе натуральных материалов. Латексированная кокосовая койра придает...
-					</div>
-					<div class="price">
-						7 720 руб.
-					</div>
-				</li>
-				
-				<li>
-					<div class="img">
-						<img src="<?=SITE_TEMPLATE_PATH?>/files/pop-2.png" alt=""/>
-					</div>
-					<a href="">Optima Lux EVS</a>
-					<div class="text">
-						Двухсторонний матрас средней жесткости. Основа матраса блок независимых пружин...
-					</div>
-					<div class="price">
-						7 720 руб.
-					</div>
-				</li>
-				
-				<li>
-					<div class="img">
-						<img src="<?=SITE_TEMPLATE_PATH?>/files/pop-3.png" alt=""/>
-					</div>
-					<a href="">Мультипакет мидл</a>
-					<div class="text">
-						Данная улучшенная модель пришла на смену Season mix EVS500 Ортопедический матрас...
-					</div>
-					<div class="price">
-						7 720 руб.
-					</div>
-				</li>
-				
-				<li>
-					<div class="img">
-						<img src="<?=SITE_TEMPLATE_PATH?>/files/pop-4.png" alt=""/>
-					</div>
-					<a href="">SOFT мидл эконом</a>
-					<div class="text">
-						Ортопедический матрас с отличающимися по жесткости сторонами. 
-					</div>
-					<div class="price">
-						7 720 руб.
-					</div>
-				</li>
-				
-			</ul>
-			<div class="clear_fix"></div>
-		</div><!-- .inner -->
-		
-		<div class="arrow">
-			<a href="" class="l"></a>
-			<a href="" class="r"></a>
-		</div>
-		
+                <?$APPLICATION->IncludeComponent("bitrix:news.list","popular",Array(
+                    "DISPLAY_DATE" => "Y",
+                    "DISPLAY_NAME" => "Y",
+                    "DISPLAY_PICTURE" => "Y",
+                    "DISPLAY_PREVIEW_TEXT" => "Y",
+                    "AJAX_MODE" => "N",
+                    "IBLOCK_TYPE" => "catalog",
+                    "IBLOCK_ID" => "6",
+                    "NEWS_COUNT" => "20",
+                    "SORT_BY1" => "ACTIVE_FROM",
+                    "SORT_ORDER1" => "DESC",
+                    "SORT_BY2" => "SORT",
+                    "SORT_ORDER2" => "ASC",
+                    "FILTER_NAME" => "",
+                    "FIELD_CODE" => "",
+                    "PROPERTY_CODE" => "",
+                    "CHECK_DATES" => "Y",
+                    "DETAIL_URL" => "",
+                    "PREVIEW_TRUNCATE_LEN" => "",
+                    "ACTIVE_DATE_FORMAT" => "d.m.Y",
+                    "SET_TITLE" => "N",
+                    "SET_STATUS_404" => "Y",
+                    "INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
+                    "ADD_SECTIONS_CHAIN" => "Y",
+                    "HIDE_LINK_WHEN_NO_DETAIL" => "Y",
+                    "PARENT_SECTION" => "",
+                    "PARENT_SECTION_CODE" => "",
+                    "INCLUDE_SUBSECTIONS" => "Y",
+                    "CACHE_TYPE" => "N",
+                    "CACHE_TIME" => "3600",
+                    "CACHE_FILTER" => "Y",
+                    "CACHE_GROUPS" => "Y",
+                    "DISPLAY_TOP_PAGER" => "N",
+                    "DISPLAY_BOTTOM_PAGER" => "Y",
+                    "PAGER_TITLE" => "Новости",
+                    "PAGER_SHOW_ALWAYS" => "Y",
+                    "PAGER_TEMPLATE" => "",
+                    "PAGER_DESC_NUMBERING" => "Y",
+                    "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
+                    "PAGER_SHOW_ALL" => "Y",
+                    "AJAX_OPTION_JUMP" => "N",
+                    "AJAX_OPTION_STYLE" => "Y",
+                    "AJAX_OPTION_HISTORY" => "N",
+                    "AJAX_OPTION_ADDITIONAL" => ""
+                    )
+                );?>	
 	</div><!-- .popular -->
 	
 	<div class="production">
