@@ -1,9 +1,5 @@
 <? if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die(); ?>
 <?
-foreach ($arResult["ITEMS"] as $id => $arItem):
-    if ($arItem['PROPERTIES']['POPULAR']['VALUE'] == '')
-        unset($arResult["ITEMS"][$id]);
-endforeach;
 foreach ($arResult["ITEMS"] as &$arItem):
     if (CModule::IncludeModule("catalog")) {   
         $arPrices = GetCatalogProductPrice($arItem['ID'], 1);

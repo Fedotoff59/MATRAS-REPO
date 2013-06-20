@@ -569,10 +569,10 @@ form {
 	list-style: none; margin: 0; padding: 0; position: relative;
 }
 #layout .production ul {
-	padding-top: 12px; position: relative; width: 100%;
+	padding-top: 12px; position: relative; width: 100%; height: 500px;
 }
 #layout .production li {
-	width: 210px; float: left; padding: 0 0 14px 20px; line-height: 20px;
+	width: 210px; height: 230px; float: left; padding: 0 0 14px 20px; line-height: 20px;
 }
 #layout .production li.clear_fix {
 	width: auto; float: none; padding: 0;
@@ -1077,7 +1077,7 @@ blockquote.style {
 }
 
 #layout #footer .contact {
-	position: relative; float: right; padding-right: 25px;
+	position: relative; float: right; padding-right: 20px;
 }
 
 #layout #footer .phone {

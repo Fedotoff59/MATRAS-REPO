@@ -16,15 +16,22 @@
 	<div class="info">
 		
 		<div class="menu">
-			<ul>
-				<li><a href="">Матрасы</a></li>
-				<li><a href="">Элитные матрасы</a></li>
-				<li><a href="">Ортопедические снования</a></li>
-				<li><a href="">Кровати</a></li>
-				<li><a href="">Аксессуары</a></li>
-			</ul>
-			<div class="clear_fix"></div>
-		</div>
+            <?$APPLICATION->IncludeComponent("bitrix:menu", "section_menu", array(
+	"ROOT_MENU_TYPE" => "section",
+	"MENU_CACHE_TYPE" => "N",
+	"MENU_CACHE_TIME" => "3600",
+	"MENU_CACHE_USE_GROUPS" => "Y",
+	"MENU_CACHE_GET_VARS" => array(
+	),
+	"MAX_LEVEL" => "1",
+	"CHILD_MENU_TYPE" => "left",
+	"USE_EXT" => "Y",
+	"DELAY" => "N",
+	"ALLOW_MULTI_SELECT" => "N"
+	),
+	false
+);?><div class="clear_fix"></div>
+</div>
 		
 		<div class="counter">
             <?$APPLICATION->IncludeFile(
@@ -40,7 +47,6 @@
                     	Array("MODE"=>"text","NAME"=>"Разработка")
                     );?>		
 	</div><!-- .info -->
-	
 	<div class="contact">
             <?$APPLICATION->IncludeFile(
                     	"/include/bottom_contacts.php",

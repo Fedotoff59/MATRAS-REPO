@@ -16,8 +16,8 @@ $aMenuLinksExt = $APPLICATION->IncludeComponent(
 		"IBLOCK_TYPE" => "catalog",
 		"IBLOCK_ID" => "6",
 		"SECTION_URL" => "",
-		"DEPTH_LEVEL" => "2",
-		"CACHE_TYPE" => "A",
+		"DEPTH_LEVEL" => "1",
+		"CACHE_TYPE" => "N",
 		"CACHE_TIME" => "36000000"
 	),
 false
