@@ -83,50 +83,24 @@ $APPLICATION->SetTitle("Матрасы");
 	
 	<div class="widget cat_list">
 		
-		<h3>Каталог товаров</h3>
-		
-		<ul>
-			<li>
-				<strong><a href="">Матрасы</a></strong>
-				<ul>
-					<li><a href="">Пружинные</a></li>
-					<li><a href="">Беспружинные</a></li>
-					<li><a href="">Тонкие матрасы</a></li>
-					<li><a href="">Детские</a></li>
-				</ul>
-			</li>
-			<li>
-				<strong><a href="">Элитные матрасы</a></strong>
-				<ul>
-					<li><a href="">Пружинные</a></li>
-					<li><a href="">Беспружинные</a></li>
-				</ul>
-			</li>
-			<li>
-				<strong>Ортопедические основания</strong>
-				<ul>
-					<li><a href="">Деревянные</a></li>
-					<li><a href="">Металлические</a></li>
-				</ul>
-			</li>
-			<li>
-				<strong><a href="">Кровати</a></strong>
-				<ul>
-					<li><a href="">ЛДСП</a></li>
-					<li><a href="">Кожаная обивка</a></li>
-					<li><a href="">Массив дерева</a></li>
-					<li><a href="">Кованые кровати</a></li>
-				</ul>
-			</li>
-			<li>
-				<strong><a href="">Аксессуары</a></strong>
-				<ul>
-					<li><a href="">Подушки</a></li>
-					<li><a href="">Наматрасники</a></li>
-					<li><a href="">Пледы, одеяла</a></li>
-				</ul>
-			</li>
-		</ul>
+<?$APPLICATION->IncludeComponent("bitrix:catalog.section.list","tree",
+Array(
+		"IBLOCK_TYPE" => "catalog",
+		"IBLOCK_ID" => "6",
+		"SECTION_ID" => $_REQUEST["SECTION_ID"],
+		"SECTION_CODE" => "",
+		"SECTION_URL" => "",
+		"COUNT_ELEMENTS" => "N",
+		"TOP_DEPTH" => "2",
+		"SECTION_FIELDS" => "",
+		"SECTION_USER_FIELDS" => "",
+		"ADD_SECTIONS_CHAIN" => "Y",
+		"CACHE_TYPE" => "N",
+		"CACHE_TIME" => "36000000",
+		"CACHE_NOTES" => "",
+		"CACHE_GROUPS" => "Y"
+	)		
+);?>
 		
 	</div><!-- .cat_list -->
 	
@@ -158,6 +132,12 @@ $APPLICATION->SetTitle("Матрасы");
 <div id="content" class="main">
 	
 	<div class="popular" id="popular">
+                <?
+                    global $arrPopularFilter;
+                    $arrPopularFilter = Array(
+                        "PROPERTY_POPULAR_VALUE" => "Y"
+                    );
+                ?>
                 <?$APPLICATION->IncludeComponent("bitrix:news.list","popular",Array(
                     "DISPLAY_DATE" => "Y",
                     "DISPLAY_NAME" => "Y",
@@ -171,7 +151,7 @@ $APPLICATION->SetTitle("Матрасы");
                     "SORT_ORDER1" => "DESC",
                     "SORT_BY2" => "SORT",
                     "SORT_ORDER2" => "ASC",
-                    "FILTER_NAME" => "",
+                    "FILTER_NAME" => "arrPopularFilter",
                     "FIELD_CODE" => "",
                     "PROPERTY_CODE" => "",
                     "CHECK_DATES" => "Y",
@@ -207,66 +187,24 @@ $APPLICATION->SetTitle("Матрасы");
 	</div><!-- .popular -->
 	
 	<div class="production">
-		
-		<div class="sub">
-			<h3>Наши товары</h3>
-		</div>
-		
-		<ul>
-			
-			<li>
-				<div class="title">Матрасы</div>
-				<div class="img">
-					<img src="<?=SITE_TEMPLATE_PATH?>/files/cat-1.png" alt=""/>
-				</div>
-				<a href="">Пружинные,</a> <a href="">Беспружинные,</a> <br/><a href="">Тонкие матрасы,</a> <a href="">Детские</a>
-			</li>
-			
-			<li>
-				<div class="title">Элитные матрасы</div>
-				<div class="img">
-					<img src="<?=SITE_TEMPLATE_PATH?>/files/cat-2.png" alt=""/>
-				</div>
-				<a href="">Пружинные,</a> <a href="">Беспружинные,</a>
-			</li>
-			
-			<li>
-				<div class="title">Ортопедические основания</div>
-				<div class="img">
-					<img src="<?=SITE_TEMPLATE_PATH?>/files/cat-3.png" alt=""/>
-				</div>
-				<a href="">Деревянные,</a> <a href="">Металлические</a>
-			</li>
-			
-			<li class="clear_fix"></li>
-			
-			<li>
-				<div class="title">Кровати</div>
-				<div class="img">
-					<img src="<?=SITE_TEMPLATE_PATH?>/files/cat-4.png" alt=""/>
-				</div>
-				<a href="">ЛДСП,</a> <a href="">Кожаная обивка,</a> <br/><a href="">Массив дерева,</a> <a href="">Кованые кровати</a>
-			</li>
-			
-			<li>
-				<div class="title">Аксессуары</div>
-				<div class="img">
-					<img src="<?=SITE_TEMPLATE_PATH?>/files/cat-5.png" alt=""/>
-				</div>
-				<a href="">Подушки,</a> <a href="">Наматрасники,</a> <a href="">Пледы,</a> <a href="">Одеяла</a>
-			</li>
-			
-			<li>
-				<div class="title">Перейти в каталог</div>
-				<div class="img">
-					<img src="<?=SITE_TEMPLATE_PATH?>/files/cat-6.png" alt=""/>
-				</div>
-				<a href="">Смотреть все товары >></a>
-			</li>
-			
-			<li class="clear_fix"></li>
-			
-		</ul>
+<?$APPLICATION->IncludeComponent("bitrix:catalog.section.list","index",
+Array(
+		"IBLOCK_TYPE" => "catalog",
+		"IBLOCK_ID" => "6",
+		"SECTION_ID" => $_REQUEST["SECTION_ID"],
+		"SECTION_CODE" => "",
+		"SECTION_URL" => "",
+		"COUNT_ELEMENTS" => "N",
+		"TOP_DEPTH" => "2",
+		"SECTION_FIELDS" => "",
+		"SECTION_USER_FIELDS" => "",
+		"ADD_SECTIONS_CHAIN" => "Y",
+		"CACHE_TYPE" => "N",
+		"CACHE_TIME" => "36000000",
+		"CACHE_NOTES" => "",
+		"CACHE_GROUPS" => "Y"
+	)		
+);?>
 	</div><!-- .production -->
 	
 	<div class="inform">

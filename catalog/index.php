@@ -1,13 +1,101 @@
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Главная");
-?>
-
 <?
-if (strlen($_REQUEST["TRADEMARK"])>0)
-	$GLOBALS["arrCatalogFilter"] = array("PROPERTY_TRADEMARK" => $_REQUEST["TRADEMARK"]);
+require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+$APPLICATION->SetTitle("Каталог");
 ?>
+<div id="sidebar">
+	
+	<div class="widget filter">
+		
+		<div class="sub">
+			<h3>Подбор по параметрам</h3>
+		</div>
+		
+		<div class="item">
+			<div class="level">Размер матраса</div>
+			<select name="">
+				<option>80 x 200 мм</option>
+				<option>80 x 200 мм</option>
+				<option>80 x 200 мм</option>
+				<option>80 x 200 мм</option>
+				<option>80 x 200 мм</option>
+				<option>80 x 200 мм</option>
+			</select>
+		</div>
+		
+		<div class="item" id="price">
+			<div class="level">Цена</div>
+			от:&nbsp;<input type="text" name="" id="start" value="200000"/>&nbsp;до:&nbsp;<input type="text" name="" id="end" value="2000000"/>
+			<div class="box"></div>
+		</div>
+		
+		<div class="item">
+			<div class="level">Бренд</div>
+			<div class="li">
+				<label><input type="checkbox" name="" checked="checked"/> Lonax Premium</label>
+			</div>
+			<div class="li">
+				<label><input type="checkbox" name=""/> ASKONA</label>
+			</div>
+			<div class="li">
+				<label><input type="checkbox" name=""/> Орматек</label>
+			</div>
+			<div class="li">
+				<label><input type="checkbox" name=""/> Промтекс-ориент</label>
+			</div>
+			<div class="">
+				<label><input type="checkbox" name=""/> Все</label>
+			</div>
+		</div>
+		
+		<div class="item">
+			<div class="level">Основа матраса</div>
+			<select name="">
+				<option>Пружинная</option>
+				<option>Пружинная</option>
+				<option>Пружинная</option>
+				<option>Пружинная</option>
+				<option>Пружинная</option>
+				<option>Пружинная</option>
+				<option>Пружинная</option>
+			</select>
+		</div>
+		
+		<div class="bt">
+			<button type="submit">Показать 25 товаров</button>
+		</div>
+		
+	</div><!-- .filter -->
+	
+	<div class="widget cat_list">
+		
+<?$APPLICATION->IncludeComponent("bitrix:catalog.section.list","tree",
+Array(
+		"IBLOCK_TYPE" => "catalog",
+		"IBLOCK_ID" => "6",
+		"SECTION_ID" => $_REQUEST["SECTION_ID"],
+		"SECTION_CODE" => "",
+		"SECTION_URL" => "",
+		"COUNT_ELEMENTS" => "N",
+		"TOP_DEPTH" => "2",
+		"SECTION_FIELDS" => "",
+		"SECTION_USER_FIELDS" => "",
+		"ADD_SECTIONS_CHAIN" => "Y",
+		"CACHE_TYPE" => "N",
+		"CACHE_TIME" => "36000000",
+		"CACHE_NOTES" => "",
+		"CACHE_GROUPS" => "Y"
+	)		
+);?>
+		
+	</div><!-- .cat_list -->
+</div><!-- #sidebar -->
 
-<?$APPLICATION->IncludeComponent("bitrix:catalog", ".default", array(
+        <div id="content" class="catalog">
+	
+	<div class="navigation">
+		<a href="">Главная</a><span>»</span><a href="">Каталог товаров</a><span>»</span>Матрасы Vegas
+	</div>
+    <?$APPLICATION->IncludeComponent("bitrix:catalog", ".default", array(
 	"IBLOCK_TYPE" => "catalog",
 	"IBLOCK_ID" => "6",
 	"BASKET_URL" => "/personal/cart/",
@@ -116,4 +204,7 @@ if (strlen($_REQUEST["TRADEMARK"])>0)
 	)
 	),
 	false
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?>
+</div><!-- #content -->
+    
+    <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
