@@ -107,11 +107,11 @@ $curPage = $APPLICATION->GetCurPage(true);
 		</div>
 		
 		<div class="cart">
-			<div class="box">
-				В корзине <a href="">15 товаров</a><br/>
-				на сумму 500 000 руб.
-			</div>
-			<a href="" class="go">Оформить заказ</a>
+<?$APPLICATION->IncludeComponent("bitrix:sale.basket.basket.small","",Array(
+		"PATH_TO_BASKET" => "/personal/cart/",
+		"PATH_TO_ORDER" => "/personal/order.php"
+	)
+);?>
 		</div>
 		
 		<div class="clear_fix"></div>
