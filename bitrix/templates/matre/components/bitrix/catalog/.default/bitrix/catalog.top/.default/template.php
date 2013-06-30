@@ -26,7 +26,7 @@ $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::Get
                     <?if($arPrice["DISCOUNT_VALUE"] < $arPrice["VALUE"]):?>
                         <s><?=$arPrice["PRINT_VALUE"]?></s> <div class="price"><?=$arPrice["PRINT_DISCOUNT_VALUE"]?></div>
                     <?else:?>
-                        <div class="price"><?=$arPrice["PRINT_VALUE"]?></div>
+                        <div class="price" id="price_<?=$arElement["ID"]?>"><?=$arPrice["PRINT_VALUE"]?></div>
                     <?endif?>
                 <?endif;?>
             <?endforeach;?>
@@ -34,16 +34,31 @@ $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::Get
     </div>
     <button type="submit" class="cart"><?echo GetMessage("CATALOG_BUY")?></button>
     <div class="hd">
-        <div class="in">
-            <form action="<?=$arElement["ADD_URL"]?>" method="GET">
-                <select class="default">
-                    <option>80 x 200 לל</option>
-                    <option>80 x 200 לל</option>
-                    <option>80 x 200 לל</option>
-                    <option>80 x 200 לל</option>
-                    <option>80 x 200 לל</option>
-                    <option>80 x 200 לל</option>
+        <div class="in">                
+            <form action="index.php?action=ADD2BASKET&" method="POST">
+                <?if(is_array($arElement["OFFERS"]) && !empty($arElement["OFFERS"])):?>
+                <select class="default" id="select_<?=$arElement["ID"]?>">
+                    <?foreach($arElement["OFFERS"] as $arOffer): $i = 1;?>
+                        <?foreach($arOffer["DISPLAY_PROPERTIES"] as $pid=>$arProperty):
+                            if($i % 5 == 0 || $i == 1) 
+                                echo '<option id ="size_'.$arOffer['ID'].'">'; 
+                                else {
+                                    echo $arProperty["VALUE"];
+                                    if($i % 4 != 0) echo ' x';
+                                }?>
+                            
+                            <?if($i % 4 == 0) echo ' סל</option>'; $i++?>
+                        <?endforeach?>
+                    <?endforeach?>
 		</select>
+                <?foreach($arElement["OFFERS"] as $arOffer):?>                    
+                    <?foreach($arOffer["PRICES"] as $code=>$arPrice):?>
+                        <?if($arPrice["CAN_ACCESS"]):?>
+                                <input type="hidden" id="price_<?=$arOffer['ID']?>" value="<?=$arPrice["PRINT_VALUE"]?>">
+                        <?endif;?>
+                    <?endforeach;?>
+                <?endforeach;?>
+                <?endif?>
                 <button type="submit" class="cart"><?echo GetMessage("CATALOG_BUY")?></button>
             </form>
             <div class="link">
@@ -53,10 +68,12 @@ $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::Get
                 <?endif;?>
                 <a href="#" class="credit"><i></i>Êףןטעü ג ךנוהטע</a>
             </div>
+            
         </div>
     </div>       
 <?endif;?>
 <?endforeach?>
 <?endforeach?>
+
 </ul>
 </div>
