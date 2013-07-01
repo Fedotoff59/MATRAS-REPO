@@ -1,5 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
-
+<div id="content" class="catalog">
+    <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", ".default", array(), false)?>	
 <div class="listing">
 <ul>
 <?foreach($arResult["ROWS"] as $arItems):?>
@@ -35,7 +36,7 @@ $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::Get
     <button type="submit" class="cart"><?echo GetMessage("CATALOG_BUY")?></button>
     <div class="hd">
         <div class="in">                
-            <form action="index.php?action=ADD2BASKET&" method="POST">
+            <form action="/catalog/?action=ADD2BASKET&id=<?=$arElement['ID']?>" id="buyform_<?=$arElement['ID']?>" method="POST">
                 <?if(is_array($arElement["OFFERS"]) && !empty($arElement["OFFERS"])):?>
                 <select class="default" id="select_<?=$arElement["ID"]?>">
                     <?foreach($arElement["OFFERS"] as $arOffer): $i = 1;?>
@@ -62,11 +63,11 @@ $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::Get
                 <button type="submit" class="cart"><?echo GetMessage("CATALOG_BUY")?></button>
             </form>
             <div class="link">
-                <a href="<?echo $arElement["BUY_URL"]?>" class="click" rel="nofollow"><i></i>КУПИТЬ В 1 КЛИК</a><br/>
+                <a href="/catalog/?action=BUY&id=<?=$arElement['ID']?>" class="click" id="buyoneclick_<?=$arElement['ID']?>" rel="nofollow"><i></i>КУПИТЬ В 1 КЛИК</a><br/>
                 <?if($arParams["DISPLAY_COMPARE"]):?>
                     <a href="<?echo $arElement["COMPARE_URL"]?>" rel="nofollow" class="compare"><i></i><?echo GetMessage("CATALOG_COMPARE")?></a><br/>
                 <?endif;?>
-                <a href="#" class="credit"><i></i>Купить в кредит</a>
+                <a href="/articles/credit.php" class="credit"><i></i>Купить в кредит</a>
             </div>
             
         </div>
@@ -77,3 +78,4 @@ $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::Get
 
 </ul>
 </div>
+</div><!-- #content -->

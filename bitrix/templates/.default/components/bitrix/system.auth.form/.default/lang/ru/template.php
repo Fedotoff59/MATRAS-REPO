@@ -1,6 +1,6 @@
 <?
 $MESS["AUTH_LOGIN_BUTTON"] = "Войти";
-$MESS["AUTH_LOGIN"] = "Войти";
+$MESS["AUTH_LOGIN"] = "Войти в кабинет";
 $MESS["AUTH_LOGOUT"] = "Выйти";
 $MESS["AUTH_PASSWORD"] = "Пароль";
 $MESS["AUTH_REMEMBER_ME"] = "Запомнить меня на этом компьютере";

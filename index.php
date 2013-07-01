@@ -198,7 +198,7 @@ Array(
 		"TOP_DEPTH" => "2",
 		"SECTION_FIELDS" => "",
 		"SECTION_USER_FIELDS" => "",
-		"ADD_SECTIONS_CHAIN" => "Y",
+		"ADD_SECTIONS_CHAIN" => "N",
 		"CACHE_TYPE" => "N",
 		"CACHE_TIME" => "36000000",
 		"CACHE_NOTES" => "",

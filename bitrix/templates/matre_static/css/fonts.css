@@ -1,0 +1,40 @@
+@font-face {
+    font-family: 'pdt_comp_pro';
+    src: url('fonts/pfdintextcomppro-regular_0.eot');
+    src: url('fonts/pfdintextcomppro-regular_0.eot?#iefix') format('embedded-opentype'),
+         url('fonts/pfdintextcomppro-regular_0.woff') format('woff'),
+         url('fonts/pfdintextcomppro-regular_0.ttf') format('truetype'),
+         url('fonts/pfdintextcomppro-regular_0.svg#pdt_comp_proregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'pdt_comp_proXTh';
+    src: url('fonts/pfdintextcomppro-xthin_0.eot');
+    src: url('fonts/pfdintextcomppro-xthin_0.eot?#iefix') format('embedded-opentype'),
+         url('fonts/pfdintextcomppro-xthin_0.woff') format('woff'),
+         url('fonts/pfdintextcomppro-xthin_0.ttf') format('truetype'),
+         url('fonts/pfdintextcomppro-xthin_0.svg#pdt_comp_proXTh') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'pdt_comp_pro_medium';
+    src: url('fonts/pfdintextcomppro-medium_0.eot');
+    src: url('fonts/pfdintextcomppro-medium_0.eot?#iefix') format('embedded-opentype'),
+         url('fonts/pfdintextcomppro-medium_0.woff') format('woff'),
+         url('fonts/pfdintextcomppro-medium_0.ttf') format('truetype'),
+         url('fonts/pfdintextcomppro-medium_0.svg#pdt_comp_promedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'pdt_comp_pro_thin';
+    src: url('fonts/pfdintextcomppro-thin_0.eot');
+    src: url('fonts/pfdintextcomppro-thin_0.eot?#iefix') format('embedded-opentype'),
+         url('fonts/pfdintextcomppro-thin_0.woff') format('woff'),
+         url('fonts/pfdintextcomppro-thin_0.ttf') format('truetype'),
+         url('fonts/pfdintextcomppro-thin_0.svg#pf_din_text_comp_prothin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

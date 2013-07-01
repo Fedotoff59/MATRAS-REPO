@@ -1,7 +1,7 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Title");
-?><?$APPLICATION->IncludeComponent("solomon:sale.basket.basket", ".default", array(
+?><?$APPLICATION->IncludeComponent("matre:sale.basket.basket", ".default", array(
 	"COLUMNS_LIST" => array(
 		0 => "QUANTITY",
 		1 => "DELETE",

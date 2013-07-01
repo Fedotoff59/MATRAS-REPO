@@ -15,6 +15,7 @@ $curPage = $APPLICATION->GetCurPage(true);
 <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.fancybox.pack.js"></script>
 <script src="<?=SITE_TEMPLATE_PATH?>/js/okSlider.js"></script>
 <script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.formstyler.js"></script>
+<script src="<?=SITE_TEMPLATE_PATH?>/js/purl.js"></script>
 <script src="<?=SITE_TEMPLATE_PATH?>/js/main.js"></script>
 </head>
 <body>
@@ -37,28 +38,15 @@ $curPage = $APPLICATION->GetCurPage(true);
 				<div class="clear_fix"></div>
 			</div><!-- .menu -->
 			
-			<div class="user">
-				<span class="lock"></span>
-				<a href="" class="dot login" onclick="return false;">Войти в кабинет</a>
-				<span class="sep"></span>
-				<a href="">Регистрация</a>
-				<div class="clear_fix"></div>
-				<div id="login">
-					<form action="#" method="post">
-						<div class="in">
-							<div class="value">Логин:</div>
-							<input type="text" name=""/>
-						</div>
-						<div class="in">
-							<div class="value">Пароль:</div>
-							<input type="password" name=""/>
-						</div>
-						<div class="in">
-							<button type="submit">Отправить</button>
-						</div>
-					</form>
-				</div>
-			</div>
+			
+                                   <?$APPLICATION->IncludeComponent("bitrix:system.auth.form","",Array(
+                                        "REGISTER_URL" => "/personal/?register=yes",
+                                        "FORGOT_PASSWORD_URL" => "",
+                                        "PROFILE_URL" => "/personal/",
+                                        "SHOW_ERRORS" => "Y" 
+                                        )
+                                    );?>
+
 			
 			<div class="clear_fix"></div>
 		</div><!-- .wrap -->
@@ -125,13 +113,21 @@ $curPage = $APPLICATION->GetCurPage(true);
 <div id="section">
 	
 	<div class="box">
-		<ul>
-			<li><a href="">Матрасы</a></li>
-			<li><a href="">Элитные матрасы</a></li>
-			<li><a href="">Ортопедические Основания</a></li>
-			<li><a href="">Кровати</a></li>
-			<li><a href="">аксессуары</a></li>
-		</ul>
+            <?$APPLICATION->IncludeComponent("bitrix:menu", "section_menu", array(
+	"ROOT_MENU_TYPE" => "section",
+	"MENU_CACHE_TYPE" => "N",
+	"MENU_CACHE_TIME" => "3600",
+	"MENU_CACHE_USE_GROUPS" => "Y",
+	"MENU_CACHE_GET_VARS" => array(
+	),
+	"MAX_LEVEL" => "1",
+	"CHILD_MENU_TYPE" => "left",
+	"USE_EXT" => "Y",
+	"DELAY" => "N",
+	"ALLOW_MULTI_SELECT" => "N"
+	),
+	false
+);?>
 		<span class="fix"></span>
 	</div>
 	

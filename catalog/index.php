@@ -79,7 +79,7 @@ Array(
 		"TOP_DEPTH" => "2",
 		"SECTION_FIELDS" => "",
 		"SECTION_USER_FIELDS" => "",
-		"ADD_SECTIONS_CHAIN" => "Y",
+		"ADD_SECTIONS_CHAIN" => "N",
 		"CACHE_TYPE" => "N",
 		"CACHE_TIME" => "36000000",
 		"CACHE_NOTES" => "",
@@ -90,11 +90,11 @@ Array(
 	</div><!-- .cat_list -->
 </div><!-- #sidebar -->
 
-        <div id="content" class="catalog">
+        
 	
-	<div class="navigation">
-		<a href="">Главная</a><span>»</span><a href="">Каталог товаров</a><span>»</span>Матрасы Vegas
-	</div>
+	
+    
+	
     <?$APPLICATION->IncludeComponent("bitrix:catalog", ".default", array(
 	"IBLOCK_TYPE" => "catalog",
 	"IBLOCK_ID" => "6",
@@ -110,7 +110,7 @@ Array(
 	"AJAX_OPTION_JUMP" => "N",
 	"AJAX_OPTION_STYLE" => "Y",
 	"AJAX_OPTION_HISTORY" => "N",
-	"CACHE_TYPE" => "A",
+	"CACHE_TYPE" => "N",
 	"CACHE_TIME" => "36000000",
 	"CACHE_FILTER" => "N",
 	"CACHE_GROUPS" => "Y",
@@ -129,8 +129,39 @@ Array(
 	),
 	"FILTER_PRICE_CODE" => array(
 	),
+	"FILTER_OFFERS_FIELD_CODE" => array(
+		0 => "",
+		1 => "",
+	),
+	"FILTER_OFFERS_PROPERTY_CODE" => array(
+		0 => "",
+		1 => "",
+	),
 	"USE_REVIEW" => "N",
-	"USE_COMPARE" => "N",
+	"USE_COMPARE" => "Y",
+	"COMPARE_NAME" => "CATALOG_COMPARE_LIST",
+	"COMPARE_FIELD_CODE" => array(
+		0 => "PREVIEW_TEXT",
+		1 => "",
+	),
+	"COMPARE_PROPERTY_CODE" => array(
+		0 => "TRADEMARK",
+		1 => "POPULAR",
+		2 => "",
+	),
+	"COMPARE_OFFERS_FIELD_CODE" => array(
+		0 => "",
+		1 => "",
+	),
+	"COMPARE_OFFERS_PROPERTY_CODE" => array(
+		0 => "HEIGHT",
+		1 => "LENGTH",
+		2 => "WIDTH",
+		3 => "",
+	),
+	"COMPARE_ELEMENT_SORT_FIELD" => "sort",
+	"COMPARE_ELEMENT_SORT_ORDER" => "asc",
+	"DISPLAY_ELEMENT_SELECT_BOX" => "N",
 	"PRICE_CODE" => array(
 		0 => "BASE",
 	),
@@ -142,6 +173,11 @@ Array(
 	),
 	"USE_PRODUCT_QUANTITY" => "Y",
 	"CONVERT_CURRENCY" => "N",
+	"OFFERS_CART_PROPERTIES" => array(
+		0 => "HEIGHT",
+		1 => "LENGTH",
+		2 => "WIDTH",
+	),
 	"SHOW_TOP_ELEMENTS" => "Y",
 	"TOP_ELEMENT_COUNT" => "9",
 	"TOP_LINE_ELEMENT_COUNT" => "3",
@@ -151,6 +187,18 @@ Array(
 		0 => "",
 		1 => "",
 	),
+	"TOP_OFFERS_FIELD_CODE" => array(
+		0 => "",
+		1 => "",
+	),
+	"TOP_OFFERS_PROPERTY_CODE" => array(
+		0 => "CML2_LINK",
+		1 => "HEIGHT",
+		2 => "LENGTH",
+		3 => "WIDTH",
+		4 => "",
+	),
+	"TOP_OFFERS_LIMIT" => "5",
 	"SECTION_COUNT_ELEMENTS" => "Y",
 	"SECTION_TOP_DEPTH" => "2",
 	"PAGE_ELEMENT_COUNT" => "30",
@@ -165,19 +213,40 @@ Array(
 	"LIST_META_KEYWORDS" => "-",
 	"LIST_META_DESCRIPTION" => "-",
 	"LIST_BROWSER_TITLE" => "NAME",
+	"LIST_OFFERS_FIELD_CODE" => array(
+		0 => "",
+		1 => "",
+	),
+	"LIST_OFFERS_PROPERTY_CODE" => array(
+		0 => "",
+		1 => "",
+	),
+	"LIST_OFFERS_LIMIT" => "5",
 	"DETAIL_PROPERTY_CODE" => array(
-		0 => "RELATED_PRODUCTS",
+		0 => "POPULAR",
 		1 => "",
 	),
 	"DETAIL_META_KEYWORDS" => "-",
 	"DETAIL_META_DESCRIPTION" => "-",
 	"DETAIL_BROWSER_TITLE" => "-",
+	"DETAIL_OFFERS_FIELD_CODE" => array(
+		0 => "",
+		1 => "",
+	),
+	"DETAIL_OFFERS_PROPERTY_CODE" => array(
+		0 => "HEIGHT",
+		1 => "LENGTH",
+		2 => "WIDTH",
+		3 => "",
+	),
 	"LINK_IBLOCK_TYPE" => "",
 	"LINK_IBLOCK_ID" => "",
 	"LINK_PROPERTY_SID" => "",
 	"LINK_ELEMENTS_URL" => "link.php?PARENT_ELEMENT_ID=#ELEMENT_ID#",
 	"USE_ALSO_BUY" => "N",
 	"USE_STORE" => "N",
+	"OFFERS_SORT_FIELD" => "sort",
+	"OFFERS_SORT_ORDER" => "asc",
 	"DISPLAY_TOP_PAGER" => "N",
 	"DISPLAY_BOTTOM_PAGER" => "Y",
 	"PAGER_TITLE" => "Товары",
@@ -186,10 +255,6 @@ Array(
 	"PAGER_DESC_NUMBERING" => "N",
 	"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
 	"PAGER_SHOW_ALL" => "N",
-	"RESIZE_PREVIEW" => "Y",
-	"RESIZE_PREVIEW_WIDTH" => "198",
-	"RESIZE_PREVIEW_HEIGHT" => "220",
-	"GET_DETAIL_PICTURE" => "Y",
 	"AJAX_OPTION_ADDITIONAL" => "",
 	"SEF_URL_TEMPLATES" => array(
 		"sections" => "",
@@ -205,6 +270,5 @@ Array(
 	),
 	false
 );?>
-</div><!-- #content -->
     
     <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
