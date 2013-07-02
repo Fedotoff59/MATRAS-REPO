@@ -1,4 +1,7 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+<div id="content" class="catalog">
+    <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", ".default", array(), false)?>	
+
 <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.section.list",
 	"",
@@ -16,7 +19,7 @@
 	),
 	$component
 );?>
-<br />
+
 <?if($arParams["USE_FILTER"]=="Y"):?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.filter",
@@ -37,7 +40,6 @@
 	$component
 );
 ?>
-<br />
 <?endif?>
 <?if($arParams["USE_COMPARE"]=="Y"):?>
 <?$APPLICATION->IncludeComponent(
@@ -52,8 +54,8 @@
 	),
 	$component
 );?>
-<br />
 <?endif?>
+<div class="listing">
 <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.section",
 	"",
@@ -117,3 +119,5 @@
 	$component
 );
 ?>
+</div>
+</div><!-- #content -->

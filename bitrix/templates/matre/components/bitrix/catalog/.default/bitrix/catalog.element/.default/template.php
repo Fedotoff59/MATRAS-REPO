@@ -34,6 +34,7 @@
 			</div>
                 <?if(is_array($arResult["OFFERS"]) && !empty($arResult["OFFERS"])):?>
                 <div class="size">
+                    Размер матраса (см х см х см)<br/>
                 <select class="sel" id="select_<?=$arResult["ID"]?>">
                     <?foreach($arResult["OFFERS"] as $arOffer): $i = 1;?>
                         <?foreach($arOffer["DISPLAY_PROPERTIES"] as $pid=>$arProperty):

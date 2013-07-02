@@ -36,7 +36,7 @@ $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::Get
     <button type="submit" class="cart"><?echo GetMessage("CATALOG_BUY")?></button>
     <div class="hd">
         <div class="in">                
-            <form action="/catalog/?action=ADD2BASKET&id=<?=$arElement['ID']?>" id="buyform_<?=$arElement['ID']?>" method="POST">
+            <form action="<?=$arElement['ADD_URL']?>" id="buyform_<?=$arElement['ID']?>" method="POST">
                 <?if(is_array($arElement["OFFERS"]) && !empty($arElement["OFFERS"])):?>
                 <select class="default" id="select_<?=$arElement["ID"]?>">
                     <?foreach($arElement["OFFERS"] as $arOffer): $i = 1;?>
@@ -63,7 +63,7 @@ $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::Get
                 <button type="submit" class="cart"><?echo GetMessage("CATALOG_BUY")?></button>
             </form>
             <div class="link">
-                <a href="/catalog/?action=BUY&id=<?=$arElement['ID']?>" class="click" id="buyoneclick_<?=$arElement['ID']?>" rel="nofollow"><i></i> ”œ»“‹ ¬ 1  À» </a><br/>
+                <a href="<?=$arElement['BUY_URL']?>" class="click" id="buyoneclick_<?=$arElement['ID']?>" rel="nofollow"><i></i> ”œ»“‹ ¬ 1  À» </a><br/>
                 <?if($arParams["DISPLAY_COMPARE"]):?>
                     <a href="<?echo $arElement["COMPARE_URL"]?>" rel="nofollow" class="compare"><i></i><?echo GetMessage("CATALOG_COMPARE")?></a><br/>
                 <?endif;?>
