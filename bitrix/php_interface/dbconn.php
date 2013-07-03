@@ -38,4 +38,5 @@ define("BX_DIR_PERMISSIONS", 0755);
 @umask(~BX_DIR_PERMISSIONS);
 @ini_set("memory_limit", "512M");
 define("BX_DISABLE_INDEX_PAGE", true);
+define("LOG_FILENAME", $_SERVER["DOCUMENT_ROOT"]."/log.txt");
 ?>

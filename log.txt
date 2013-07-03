@@ -1,0 +1,50 @@
+Host: www.matras.seomagic.ru
+Date: 2013-07-03 20:51:40
+Module: 1
+424
+    CheckGoodsFields::CheckGoodsFieldsTrademark < call_user_func_array < ExecuteModuleEventEx < CAllIBlockElement::CheckFields < CIBlockElement::Update
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/main/classes/general/module.php:730
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/classes/general/iblockelement.php:4318
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/classes/mysql/iblockelement.php:1177
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/admin/iblock_element_edit.php:760
+----------
+Host: www.matras.seomagic.ru
+Date: 2013-07-03 20:52:54
+Module: 1
+$SID = Array
+    CheckGoodsFields::CheckGoodsFieldsTrademark < call_user_func_array < ExecuteModuleEventEx < CAllIBlockElement::CheckFields < CIBlockElement::Update
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/main/classes/general/module.php:730
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/classes/general/iblockelement.php:4318
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/classes/mysql/iblockelement.php:1177
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/admin/iblock_element_edit.php:760
+----------
+Host: www.matras.seomagic.ru
+Date: 2013-07-03 20:52:54
+Module: 1
+$ar_groupID = 424
+    CheckGoodsFields::CheckGoodsFieldsTrademark < call_user_func_array < ExecuteModuleEventEx < CAllIBlockElement::CheckFields < CIBlockElement::Update
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/main/classes/general/module.php:730
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/classes/general/iblockelement.php:4318
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/classes/mysql/iblockelement.php:1177
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/admin/iblock_element_edit.php:760
+----------
+Host: www.matras.seomagic.ru
+Date: 2013-07-03 20:53:59
+Module: 1
+$SID = 422
+    CheckGoodsFields::CheckGoodsFieldsTrademark < call_user_func_array < ExecuteModuleEventEx < CAllIBlockElement::CheckFields < CIBlockElement::Update
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/main/classes/general/module.php:730
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/classes/general/iblockelement.php:4318
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/classes/mysql/iblockelement.php:1177
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/admin/iblock_element_edit.php:760
+----------
+Host: www.matras.seomagic.ru
+Date: 2013-07-03 20:53:59
+Module: 1
+$ar_groupID = 424
+    CheckGoodsFields::CheckGoodsFieldsTrademark < call_user_func_array < ExecuteModuleEventEx < CAllIBlockElement::CheckFields < CIBlockElement::Update
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/main/classes/general/module.php:730
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/classes/general/iblockelement.php:4318
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/classes/mysql/iblockelement.php:1177
+	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/admin/iblock_element_edit.php:760
+----------
