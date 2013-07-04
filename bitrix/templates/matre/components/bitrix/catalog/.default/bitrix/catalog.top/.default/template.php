@@ -1,7 +1,5 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
-<div id="content" class="catalog">
-    <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", ".default", array(), false)?>	
-<div class="listing">
+
 <ul>
 <?foreach($arResult["ROWS"] as $arItems):?>
 <?foreach($arItems as $arElement):?>
@@ -65,7 +63,7 @@ $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::Get
             <div class="link">
                 <a href="<?=$arElement['BUY_URL']?>" class="click" id="buyoneclick_<?=$arElement['ID']?>" rel="nofollow"><i></i>КУПИТЬ В 1 КЛИК</a><br/>
                 <?if($arParams["DISPLAY_COMPARE"]):?>
-                    <a href="<?echo $arElement["COMPARE_URL"]?>" rel="nofollow" class="compare"><i></i><?echo GetMessage("CATALOG_COMPARE")?></a><br/>
+                    <a href="<?=$arElement["COMPARE_URL"]?>" rel="nofollow" class="compare" id="compare_<?=$arElement['ID']?>"><i></i><?echo GetMessage("CATALOG_COMPARE")?></a><br/>
                 <?endif;?>
                 <a href="/articles/credit.php" class="credit"><i></i>Купить в кредит</a>
             </div>
@@ -77,5 +75,3 @@ $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::Get
 <?endforeach?>
 
 </ul>
-</div>
-</div><!-- #content -->

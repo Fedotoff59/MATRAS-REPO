@@ -151,12 +151,14 @@ document.getElementById('bx_auth_secure').style.display = 'inline-block';
 	</tbody>
 </table>
 </div>
-
-	<div class="action form"><button type="submit" name="save" value="Y"><?=(($arResult["ID"]>0) ? GetMessage("MAIN_SAVE") : GetMessage("MAIN_ADD"))?></button>&nbsp;&nbsp;<button type="reset" class="gray_bt"><?=GetMessage('MAIN_RESET');?></button></div>
+<div class="clear_fix"></div>
+<div style="margin-top: 10px;">
+	<div style="float:left;"><button type="submit" name="save" value="Y"><?=(($arResult["ID"]>0) ? GetMessage("MAIN_SAVE") : GetMessage("MAIN_ADD"))?></button>&nbsp;&nbsp;<button type="reset" class="gray_bt"><?=GetMessage('MAIN_RESET');?></button></div>
 </form>
 <form method="get" name="form1" action="/personal/orders/">
-	<div class="action form"><button type="submit" name="orders" value="Y">Список моих заказов</button></div>
+	<div style="float:left">&nbsp;&nbsp;<button type="submit" name="orders" value="Y">Список моих заказов</button></div>
 </form>
+</div>
 			</div>
 			<div class="clear_fix"></div>
 			

@@ -1,5 +1,16 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 <div id="content" class="product">
+<?
+if($arParams['ADD_SECTIONS_CHAIN'] && !empty($arResult['NAME']))
+{ 
+   $arResult['SECTION']['PATH'][] = array(
+   'NAME' => $arResult['NAME'], 
+   'PATH' => ' '); 
+
+   $component = $this->__component; 
+   $component->arResult = $arResult; 
+}
+?>
 <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", ".default", array(), false)?>	
 <h1><?=$arResult["NAME"]?></h1>
 	<div class="block">
@@ -34,13 +45,15 @@
 			</div>
                 <?if(is_array($arResult["OFFERS"]) && !empty($arResult["OFFERS"])):?>
                 <div class="size">
-                    Размер матраса (см х см х см)<br/>
+                    Размер матраса (в х д х ш)<br/>
                 <select class="sel" id="select_<?=$arResult["ID"]?>">
                     <?foreach($arResult["OFFERS"] as $arOffer): $i = 1;?>
                         <?foreach($arOffer["DISPLAY_PROPERTIES"] as $pid=>$arProperty):
-                            if($i % 5 == 0 || $i == 1) 
-                                echo '<option id ="size_'.$arOffer['ID'].'">'; 
-                                else {
+                            if($i % 5 == 0 || $i == 1) { 
+                                if(isset($arResult['CUR_OFFER']) && ($arResult['CUR_OFFER'] == $arOffer['ID']))
+                                    echo '<option id="size_'.$arOffer['ID'].'" selected>'; 
+                                    else echo '<option id="size_'.$arOffer['ID'].'">'; 
+                            } else {
                                     echo $arProperty["VALUE"];
                                     if($i % 4 != 0) echo ' x';
                                 }?>
@@ -71,7 +84,7 @@
 			<div class="clear_fix"></div>
 			
 			<div class="link">
-				<a href="" class="compare"><i></i>Добавить к сравнению</a><br/>
+                            <a href="/catalog/?action=ADD_TO_COMPARE_LIST&id=<?=$arResult['ID']?>" class="compare" id="compare_<?=$arResult['ID']?>"><i></i>Добавить к сравнению</a><br/>
 				<a href="<?=$arResult['BUY_URL']?>" class="click" id="buyoneclick_<?=$arResult['ID']?>" ><i></i>КУПИТЬ В 1 КЛИК</a><br/>
 				<a href="/articles/credit.php" class="credit"><i></i>Купить в кредит</a>
 			</div>
@@ -84,6 +97,4 @@
 	<div class="structure">
             <?=$arResult['DETAIL_TEXT']?>
         </div>
-
-
 </div>

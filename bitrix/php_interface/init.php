@@ -15,6 +15,8 @@ class CheckGoodsFields
 { 
    public function CheckGoodsFieldsTrademark (&$arFields) 
    {    
+        AddMessage2Log('$arFields = '.print_r($arFields, true),'');
+        if($arFields['IBLOCK_ID'] == 6):
         $arCollection = $arFields['PROPERTY_VALUES'][38]; // Свойство привязки к коллекции
         if (is_array($arCollection) && !empty($arCollection))
             foreach ($arCollection as $Collection)
@@ -34,7 +36,12 @@ class CheckGoodsFields
                 return false;
             }
             
-        } 
+        }
+        $arSelect = Array("ID", "CML2_LINK");
+        $arFilter = Array("IBLOCK_ID" => 13, "ACTIVE"=>"Y", "PROPERTY_CML2_LINK" => $arFields['ID']);
+        $res = CIBlockElement::GetList(Array(), $arFilter, false, false, $arSelect);
+        $arFields['ACTIVE'] = ($ob = $res->GetNextElement()) ? 'Y' : 'N';
+        endif;
    } 
 } 
 AddEventHandler("main", "OnEpilog", Array("CMelcosoft", "Redirect404"));

@@ -21,7 +21,7 @@
 );?>
 
 <?if($arParams["USE_FILTER"]=="Y"):?>
-<?$APPLICATION->IncludeComponent(
+<?/*$APPLICATION->IncludeComponent(
 	"bitrix:catalog.filter",
 	"",
 	Array(
@@ -38,7 +38,7 @@
 		"CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
 	),
 	$component
-);
+);*/
 ?>
 <?endif?>
 <?if($arParams["USE_COMPARE"]=="Y"):?>

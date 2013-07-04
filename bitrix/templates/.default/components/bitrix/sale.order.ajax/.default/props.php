@@ -141,7 +141,7 @@ function PrintPropsForm($arSource=Array(), $locationTemplate = ".default")
 	return false;
 }
 ?>
-<b><?=GetMessage("SOA_TEMPL_PROP_INFO")?></b><br />
+<h1><?=GetMessage("SOA_TEMPL_PROP_INFO")?></h1>
 <table class="sale_order_full_table">
 <tr><td>
 <?

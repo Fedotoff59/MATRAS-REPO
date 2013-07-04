@@ -1,6 +1,6 @@
 <?
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("Каталог");
+$APPLICATION->SetTitle("Каталог товаров");
 ?>
 <div id="sidebar">
 	
@@ -90,18 +90,27 @@ Array(
 	</div><!-- .cat_list -->
 </div><!-- #sidebar -->
 <?
-                    global $arrTradenarkFilter;
-                    $arrTradenarkFilter = Array(
-                        "PROPERTY_TRADEMARK" => "6592"
-                    );
-                ?>
+if (isset($_GET['TRADEMARK']) && $_GET['TRADEMARK'] != '') {   
+    global $arrTrademarkFilter;
+    $arrTrademarkFilter = Array(
+        "PROPERTY_TRADEMARK" => htmlspecialcharsbx($_GET['TRADEMARK'])
+        );
+    if (isset($_GET['COLLECTION']) && $_GET['COLLECTION'] != '')
+        $arrTrademarkFilter['PROPERTY_COLLECTION'] = htmlspecialcharsbx($_GET['COLLECTION']);
+}
+?>
 <?
 $APPLICATION->IncludeComponent("bitrix:catalog.sections.top", "trademarks", array(
 	"IBLOCK_TYPE" => "catalog",
 	"IBLOCK_ID" => "6",
 	"SECTION_FIELDS" => array(
-		0 => "",
-		1 => "",
+		0 => "ID",
+		1 => "CODE",
+		2 => "NAME",
+		3 => "SORT",
+		4 => "DESCRIPTION",
+		5 => "PICTURE",
+		6 => "",
 	),
 	"SECTION_USER_FIELDS" => array(
 		0 => "",
@@ -111,9 +120,9 @@ $APPLICATION->IncludeComponent("bitrix:catalog.sections.top", "trademarks", arra
 	"SECTION_SORT_ORDER" => "asc",
 	"ELEMENT_SORT_FIELD" => "id",
 	"ELEMENT_SORT_ORDER" => "asc",
-	"FILTER_NAME" => "arrTradenarkFilter",
-	"SECTION_COUNT" => "20",
-	"ELEMENT_COUNT" => "20",
+	"FILTER_NAME" => "arrTrademarkFilter",
+	"SECTION_COUNT" => "0",
+	"ELEMENT_COUNT" => "0",
 	"LINE_ELEMENT_COUNT" => "3",
 	"PROPERTY_CODE" => array(
 		0 => "",
@@ -148,103 +157,4 @@ $APPLICATION->IncludeComponent("bitrix:catalog.sections.top", "trademarks", arra
 	false
 );?>
 
-<?/*$APPLICATION->IncludeComponent("melcosoft:splitcatalog", ".default", array(
-	"IBLOCK_TYPE" => "catalog",
-	"IBLOCK_ID" => "7",
-	"BASKET_URL" => "/personal/basket.php",
-	"ACTION_VARIABLE" => "action",
-	"PRODUCT_ID_VARIABLE" => "id",
-	"SECTION_ID_VARIABLE" => "SECTION_ID",
-	"PRODUCT_QUANTITY_VARIABLE" => "quantity",
-	"PRODUCT_PROPS_VARIABLE" => "prop",
-	"SEF_MODE" => "Y",
-	"SEF_FOLDER" => "/manufacturers/",
-	"AJAX_MODE" => "N",
-	"AJAX_OPTION_JUMP" => "N",
-	"AJAX_OPTION_STYLE" => "Y",
-	"AJAX_OPTION_HISTORY" => "N",
-	"CACHE_TYPE" => "A",
-	"CACHE_TIME" => "36000000",
-	"CACHE_FILTER" => "N",
-	"CACHE_GROUPS" => "Y",
-	"SET_TITLE" => "Y",
-	"SET_STATUS_404" => "N",
-	"USE_ELEMENT_COUNTER" => "Y",
-	"USE_FILTER" => "N",
-	"USE_REVIEW" => "N",
-	"USE_COMPARE" => "N",
-	"PRICE_CODE" => array(
-		0 => "BASE",
-	),
-	"USE_PRICE_COUNT" => "N",
-	"SHOW_PRICE_COUNT" => "1",
-	"PRICE_VAT_INCLUDE" => "Y",
-	"PRICE_VAT_SHOW_VALUE" => "N",
-	"PRODUCT_PROPERTIES" => array(
-	),
-	"USE_PRODUCT_QUANTITY" => "N",
-	"CONVERT_CURRENCY" => "N",
-	"SHOW_TOP_ELEMENTS" => "Y",
-	"TOP_ELEMENT_COUNT" => "9",
-	"TOP_LINE_ELEMENT_COUNT" => "3",
-	"TOP_ELEMENT_SORT_FIELD" => "sort",
-	"TOP_ELEMENT_SORT_ORDER" => "asc",
-	"TOP_PROPERTY_CODE" => array(
-		0 => "",
-		1 => "",
-	),
-	"SECTION_COUNT_ELEMENTS" => "Y",
-	"SECTION_TOP_DEPTH" => "2",
-	"PAGE_ELEMENT_COUNT" => "30",
-	"LINE_ELEMENT_COUNT" => "3",
-	"ELEMENT_SORT_FIELD" => "sort",
-	"ELEMENT_SORT_ORDER" => "asc",
-	"LIST_PROPERTY_CODE" => array(
-		0 => "",
-		1 => "",
-	),
-	"INCLUDE_SUBSECTIONS" => "Y",
-	"LIST_META_KEYWORDS" => "-",
-	"LIST_META_DESCRIPTION" => "-",
-	"LIST_BROWSER_TITLE" => "-",
-	"DETAIL_PROPERTY_CODE" => array(
-		0 => "",
-		1 => "",
-	),
-	"DETAIL_META_KEYWORDS" => "-",
-	"DETAIL_META_DESCRIPTION" => "-",
-	"DETAIL_BROWSER_TITLE" => "-",
-	"LINK_IBLOCK_TYPE" => "catalog",
-	"LINK_IBLOCK_ID" => "6",
-	"LINK_PROPERTY_SID" => "TRADEMARK",
-	"LINK_ELEMENTS_URL" => "link.php?PARENT_ELEMENT_ID=#ELEMENT_ID#",
-	"USE_ALSO_BUY" => "N",
-	"USE_STORE" => "N",
-	"DISPLAY_TOP_PAGER" => "N",
-	"DISPLAY_BOTTOM_PAGER" => "Y",
-	"PAGER_TITLE" => "Товары",
-	"PAGER_SHOW_ALWAYS" => "Y",
-	"PAGER_TEMPLATE" => "",
-	"PAGER_DESC_NUMBERING" => "N",
-	"PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",
-	"PAGER_SHOW_ALL" => "N",
-	"RESIZE_PREVIEW" => "Y",
-	"RESIZE_PREVIEW_WIDTH" => "198",
-	"RESIZE_PREVIEW_HEIGHT" => "220",
-	"GET_DETAIL_PICTURE" => "Y",
-	"AJAX_OPTION_ADDITIONAL" => "",
-	"SEF_URL_TEMPLATES" => array(
-		"sections" => "",
-		"section" => "#ELEMENT_CODE#/",
-		"element" => "/catalog/#SECTION_CODE#/#ELEMENT_CODE#/",
-		"compare" => "compare.php?action=#ACTION_CODE#",
-	),
-	"VARIABLE_ALIASES" => array(
-		"compare" => array(
-			"ACTION_CODE" => "action",
-		),
-	)
-	),
-	false
-);*/?>  
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

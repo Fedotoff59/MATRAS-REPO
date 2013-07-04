@@ -3,13 +3,13 @@
 <?$tdi=0?>
 	<div class="tbl form">
 		<div class="cap"><div></div></div>
-		<table class="st">
+		<table class="st" width="300">
 	<tr>
 		<td class="t_1 top">&nbsp;</td>
 		<td class="t_2 top"><?=GetMessage("SOA_TEMPL_SUM_NAME")?></td>
-		<td class="t_3 top"><?=GetMessage("SOA_TEMPL_SUM_DISCOUNT")?></td>
+		<td class="t_3 top"></td>
 		<td class="t_4 top"><?=GetMessage("SOA_TEMPL_SUM_QUANTITY")?></td>
-		<td class="t_5 top"><?=GetMessage("SOA_TEMPL_SUM_PRICE")?></td>
+		<td class="t_5 top" align="center"><?=GetMessage("SOA_TEMPL_SUM_PRICE")?></td>
 	</tr>
 	<?
 	foreach($arResult["BASKET_ITEMS"] as $arBasketItems)
@@ -18,9 +18,9 @@
 		<tr>
 			<td class="t_1 <?if ($tdi%2 == 1):?> gr<?endif;?>">&nbsp;</td>
 			<td class="t_2 <?if ($tdi%2 == 1):?> gr<?endif;?>"><?=$arBasketItems["NAME"]?></td>
-			<td class="t_3 <?if ($tdi%2 == 1):?> gr<?endif;?>"><?=$arBasketItems["DISCOUNT_PRICE_PERCENT_FORMATED"]?></td>
+			<td class="t_3 <?if ($tdi%2 == 1):?> gr<?endif;?>"></td>
 			<td class="t_4 <?if ($tdi%2 == 1):?> gr<?endif;?>"><?=$arBasketItems["QUANTITY"]?></td>
-			<td class="t_5 <?if ($tdi%2 == 1):?> gr<?endif;?>"><?=$arBasketItems["PRICE_FORMATED"]?></td>
+			<td class="t_5 <?if ($tdi%2 == 1):?> gr<?endif;?>" align="right"><?=$arBasketItems["PRICE_FORMATED"]?></td>
 		</tr>
 		<?$tdi++;
 	}

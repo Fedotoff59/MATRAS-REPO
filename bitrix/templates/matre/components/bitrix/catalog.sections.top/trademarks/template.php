@@ -1,12 +1,37 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
 <div id="content" class="catalog">
     <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", ".default", array(), false)?>	
-<div class="catalog-sections-top">
+
+    <?if (isset($arResult['TRADEMARK'])):?>
+        <h1>Продукция <?=$arResult['TRADEMARK']['NAME']?></h1>
+        <div class="box">
+            <div class="text">
+                <?=$arResult['TRADEMARK']['DESCRIPTION']?>
+            </div>
+            <?//if (is_array($arResult['TRADEMARK']['ITEMS']) && !empty($arResult['TRADEMARK']['ITEMS'])):?>
+            <ul>
+                <?foreach($arResult['TRADEMARK']['ITEMS'] as $arCollection):?>
+                    <li>
+                        <?if($arCollection['PREVIEW_PICTURE_SRC'] != ''):?>
+                            <div class="img">
+				<img src="<?=$arCollection['PREVIEW_PICTURE_SRC']?>" alt=""/>
+                            </div>
+                            <?=$arCollection['PREVIEW_TEXT']?>
+                            <a href="<?=$arCollection['LINK']?>"></a>
+                        <?endif;?>    
+                    </li>
+                <?endforeach?>
+            </ul>
+            
+            <?//endif?>
+            <div class="clear_fix"></div>
+            </div>
+    <?endif;?>
 <?foreach($arResult["SECTIONS"] as $arSection):?>
     <?if(is_array($arSection['ITEMS']) && !empty($arSection['ITEMS'])):?>
-        <p><a href="<?=$arSection["SECTION_PAGE_URL"]?>"><?=$arSection["NAME"]?></a></p>
+    <h3><?=$arSection["PARENT"]?></h3>
+    <p><a href="<?=$arSection["SECTION_PAGE_URL"]?>"><?=$arSection["NAME"]?></a></p>
     <?endif?>
-</div>
 <div class="listing">
     <ul>
         <?foreach($arSection['ITEMS'] as $arElement):?>
@@ -69,7 +94,7 @@ $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::Get
             <div class="link">
                 <a href="<?=$arElement['BUY_URL']?>" class="click" id="buyoneclick_<?=$arElement['ID']?>" rel="nofollow"><i></i>КУПИТЬ В 1 КЛИК</a><br/>
                 <?if($arParams["DISPLAY_COMPARE"]):?>
-                    <a href="<?echo $arElement["COMPARE_URL"]?>" rel="nofollow" class="compare"><i></i><?echo GetMessage("CATALOG_COMPARE")?></a><br/>
+                    <a href="/catalog/?action=ADD_TO_COMPARE_LIST&id=<?=$arElement['ID']?>" rel="nofollow" class="compare" id="compare_<?=$arElement['ID']?>"><i></i><?echo GetMessage("CATALOG_COMPARE")?></a><br/>
                 <?endif;?>
                 <a href="/articles/credit.php" class="credit"><i></i>Купить в кредит</a>
             </div>
@@ -77,8 +102,13 @@ $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::Get
         </div>
     </div>       
 <?endif;?>
+</li>
 <?endforeach?>
     </ul>
+    </div>
+<div class="clear_fix"></div>
 <?endforeach?>
-</div>
+
+
+
 </div>

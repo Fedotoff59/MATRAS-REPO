@@ -1,6 +1,5 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
-<div id="content" class="catalog">
-    <h1>Сравнение товаров</h1>
+<div class="catalog-compare-result">
 <a name="compare_table"></a>
 	<noindex><p>
 	<?if($arResult["DIFFERENT"]):
@@ -50,10 +49,10 @@
 	<?endif?>
 <br />
 <form action="<?=$APPLICATION->GetCurPage()?>" method="get">
-	<table class="style" cellspacing="0" cellpadding="0" border="0">
+	<table class="data-table" cellspacing="0" cellpadding="0" border="0">
 		<thead>
 		<tr>
-			<td valign="top" >&nbsp;</td>
+			<td valign="top">&nbsp;</td>
 			<?foreach($arResult["ITEMS"] as $arElement):?>
 				<td valign="top" width="<?=round(100/count($arResult["ITEMS"]))?>%">
 					<input type="checkbox" name="ID[]" value="<?=$arElement["ID"]?>" />
@@ -62,9 +61,9 @@
 		</tr>
 		<?foreach($arResult["ITEMS"][0]["FIELDS"] as $code=>$field):?>
 		<tr>
-			<th valign="middle" width="15%"><?=GetMessage("IBLOCK_FIELD_".$code)?></th>
+			<th valign="top" nowrap><?=GetMessage("IBLOCK_FIELD_".$code)?></th>
 			<?foreach($arResult["ITEMS"] as $arElement):?>
-				<td valign="middle">
+				<td valign="top">
 					<?switch($code):
 						case "NAME":
 							?><a href="<?=$arElement["DETAIL_PAGE_URL"]?>"><?=$arElement[$code]?></a><?
@@ -93,9 +92,9 @@
 		<?foreach($arResult["ITEMS"][0]["PRICES"] as $code=>$arPrice):?>
 			<?if($arPrice["CAN_ACCESS"]):?>
 			<tr>
-				<th valign="middle">Цена<?//=$arResult["PRICES"][$code]["TITLE"]?></th>
+				<th valign="top" nowrap><?=$arResult["PRICES"][$code]["TITLE"]?></th>
 				<?foreach($arResult["ITEMS"] as $arElement):?>
-					<td valign="middle">
+					<td valign="top">
 						<?if($arElement["PRICES"][$code]["CAN_ACCESS"]):?>
 							<b><?=$arElement["PRICES"][$code]["PRINT_DISCOUNT_VALUE"]?></b>
 						<?endif;?>
@@ -119,14 +118,14 @@
 			$diff = (count(array_unique($arCompare)) > 1 ? true : false);
 			if($diff || !$arResult["DIFFERENT"]):?>
 				<tr>
-					<th valign="middle">&nbsp;<?=$arProperty["NAME"]?>&nbsp;</th>
+					<th valign="top" nowrap>&nbsp;<?=$arProperty["NAME"]?>&nbsp;</th>
 					<?foreach($arResult["ITEMS"] as $arElement):?>
 						<?if($diff):?>
-						<td valign="middle">&nbsp;
+						<td valign="top">&nbsp;
 							<?=(is_array($arElement["DISPLAY_PROPERTIES"][$code]["DISPLAY_VALUE"])? implode("/ ", $arElement["DISPLAY_PROPERTIES"][$code]["DISPLAY_VALUE"]): $arElement["DISPLAY_PROPERTIES"][$code]["DISPLAY_VALUE"])?>
 						</td>
 						<?else:?>
-						<th valign="middle">&nbsp;
+						<th valign="top">&nbsp;
 							<?=(is_array($arElement["DISPLAY_PROPERTIES"][$code]["DISPLAY_VALUE"])? implode("/ ", $arElement["DISPLAY_PROPERTIES"][$code]["DISPLAY_VALUE"]): $arElement["DISPLAY_PROPERTIES"][$code]["DISPLAY_VALUE"])?>
 						</th>
 						<?endif?>
@@ -149,14 +148,14 @@
 			$diff = (count(array_unique($arCompare)) > 1 ? true : false);
 			if($diff || !$arResult["DIFFERENT"]):?>
 				<tr>
-					<th valign="middle">&nbsp;<?=GetMessage("IBLOCK_FIELD_".$code)?>&nbsp;</th>
+					<th valign="top" nowrap>&nbsp;<?=GetMessage("IBLOCK_FIELD_".$code)?>&nbsp;</th>
 					<?foreach($arResult["ITEMS"] as $arElement):?>
 						<?if($diff):?>
-						<td valign="middle">&nbsp;
+						<td valign="top">&nbsp;
 							<?=(is_array($arElement["OFFER_FIELDS"][$code])? implode("/ ", $arElement["OFFER_FIELDS"][$code]): $arElement["OFFER_FIELDS"][$code])?>
 						</td>
 						<?else:?>
-						<th valign="middle">&nbsp;
+						<th valign="top">&nbsp;
 							<?=(is_array($arElement["OFFER_FIELDS"][$code])? implode("/ ", $arElement["OFFER_FIELDS"][$code]): $arElement["OFFER_FIELDS"][$code])?>
 						</th>
 						<?endif?>
@@ -179,14 +178,14 @@
 			$diff = (count(array_unique($arCompare)) > 1 ? true : false);
 			if($diff || !$arResult["DIFFERENT"]):?>
 				<tr>
-					<th valign="middle">&nbsp;<?=$arProperty["NAME"]?>&nbsp;</th>
+					<th valign="top" nowrap>&nbsp;<?=$arProperty["NAME"]?>&nbsp;</th>
 					<?foreach($arResult["ITEMS"] as $arElement):?>
 						<?if($diff):?>
-						<td valign="middle">&nbsp;
+						<td valign="top">&nbsp;
 							<?=(is_array($arElement["OFFER_DISPLAY_PROPERTIES"][$code]["DISPLAY_VALUE"])? implode("/ ", $arElement["OFFER_DISPLAY_PROPERTIES"][$code]["DISPLAY_VALUE"]): $arElement["OFFER_DISPLAY_PROPERTIES"][$code]["DISPLAY_VALUE"])?>
 						</td>
 						<?else:?>
-						<th valign="middle">&nbsp;
+						<th valign="top">&nbsp;
 							<?=(is_array($arElement["OFFER_DISPLAY_PROPERTIES"][$code]["DISPLAY_VALUE"])? implode("/ ", $arElement["OFFER_DISPLAY_PROPERTIES"][$code]["DISPLAY_VALUE"]): $arElement["OFFER_DISPLAY_PROPERTIES"][$code]["DISPLAY_VALUE"])?>
 						</th>
 						<?endif?>
@@ -211,7 +210,7 @@
 		<option value="<?=$ID?>"><?=$NAME?></option>
 	<?endforeach?>
 	</select>
-	<button type="submit" value="<?=GetMessage("CATALOG_ADD_TO_COMPARE_LIST")?>" />
+	<input type="submit" value="<?=GetMessage("CATALOG_ADD_TO_COMPARE_LIST")?>" />
 </form>
 </p>
 <?endif?>

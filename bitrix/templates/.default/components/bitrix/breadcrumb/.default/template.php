@@ -15,7 +15,7 @@ for($index = 0, $itemSize = count($arResult); $index < $itemSize; $index++)
 		$strReturn .= '<i></i>';
 
 	$title = htmlspecialcharsex($arResult[$index]["TITLE"]);
-	if($arResult[$index]["LINK"] <> $APPLICATION->GetCurPage(false)) {
+	if($arResult[$index]["LINK"] <> $APPLICATION->GetCurPage(false) && $index < (count($arResult)-1)) {
 		$strReturn .= '<a href="'.$arResult[$index]["LINK"].'" title="'.$title.'">'.$title.'</a>';
                 $strReturn .= ($index != $itemSize - 1) ? '<span>»</span>' : '';
         }

@@ -1,7 +1,109 @@
 Host: www.matras.seomagic.ru
-Date: 2013-07-03 20:51:40
-Module: 1
-424
+Date: 2013-07-04 20:53:36
+Module: 
+$arFields = Array
+(
+    [ACTIVE] => Y
+    [MODIFIED_BY] => 28
+    [IBLOCK_ID] => 6
+    [ACTIVE_FROM] => 
+    [ACTIVE_TO] => 
+    [SORT] => 500
+    [NAME] => ûâ
+    [CODE] => yv
+    [TAGS] => 
+    [PREVIEW_PICTURE] => Array
+        (
+            [name] => 
+            [type] => 
+            [tmp_name] => 
+            [error] => 4
+            [size] => 0
+            [del] => 
+            [description] => 
+            [MODULE_ID] => iblock
+            [old_file] => 
+        )
+
+    [PREVIEW_TEXT] => as
+    [PREVIEW_TEXT_TYPE] => text
+    [DETAIL_PICTURE] => Array
+        (
+            [name] => 
+            [type] => 
+            [tmp_name] => 
+            [error] => 4
+            [size] => 0
+            [del] => 
+            [description] => 
+            [MODULE_ID] => iblock
+            [old_file] => 
+        )
+
+    [DETAIL_TEXT] => 
+    [DETAIL_TEXT_TYPE] => text
+    [TMP_ID] => 0
+    [PROPERTY_VALUES] => Array
+        (
+            [31] => 
+            [37] => Array
+                (
+                    [0] => Array
+                        (
+                            [VALUE] => 
+                        )
+
+                )
+
+            [21] => Array
+                (
+                    [0] => Array
+                        (
+                            [VALUE] => 424
+                        )
+
+                )
+
+            [38] => Array
+                (
+                    [28511] => Array
+                        (
+                            [VALUE] => 6587
+                        )
+
+                )
+
+            [36] => Array
+                (
+                    [nundefined] => Array
+                        (
+                            [name] => 
+                            [type] => 
+                            [tmp_name] => 
+                            [error] => 4
+                            [size] => 0
+                        )
+
+                )
+
+        )
+
+    [IBLOCK_SECTION] => Array
+        (
+            [0] => 393
+            [1] => 424
+        )
+
+    [XML_ID] => 11078
+    [WF] => N
+    [WF_NEW] => 
+    [SEARCHABLE_CONTENT] => ÛÂ
+AS
+
+    [IBLOCK_SECTION_ID] => 
+    [ID] => 11078
+)
+
     CheckGoodsFields::CheckGoodsFieldsTrademark < call_user_func_array < ExecuteModuleEventEx < CAllIBlockElement::CheckFields < CIBlockElement::Update
 	/home/srv34072/matras.seomagic.ru/bitrix/modules/main/classes/general/module.php:730
 	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/classes/general/iblockelement.php:4318
@@ -9,39 +111,119 @@ Module: 1
 	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/admin/iblock_element_edit.php:760
 ----------
 Host: www.matras.seomagic.ru
-Date: 2013-07-03 20:52:54
-Module: 1
-$SID = Array
-    CheckGoodsFields::CheckGoodsFieldsTrademark < call_user_func_array < ExecuteModuleEventEx < CAllIBlockElement::CheckFields < CIBlockElement::Update
-	/home/srv34072/matras.seomagic.ru/bitrix/modules/main/classes/general/module.php:730
-	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/classes/general/iblockelement.php:4318
-	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/classes/mysql/iblockelement.php:1177
-	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/admin/iblock_element_edit.php:760
-----------
-Host: www.matras.seomagic.ru
-Date: 2013-07-03 20:52:54
-Module: 1
-$ar_groupID = 424
-    CheckGoodsFields::CheckGoodsFieldsTrademark < call_user_func_array < ExecuteModuleEventEx < CAllIBlockElement::CheckFields < CIBlockElement::Update
-	/home/srv34072/matras.seomagic.ru/bitrix/modules/main/classes/general/module.php:730
-	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/classes/general/iblockelement.php:4318
-	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/classes/mysql/iblockelement.php:1177
-	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/admin/iblock_element_edit.php:760
-----------
-Host: www.matras.seomagic.ru
-Date: 2013-07-03 20:53:59
-Module: 1
-$SID = 422
-    CheckGoodsFields::CheckGoodsFieldsTrademark < call_user_func_array < ExecuteModuleEventEx < CAllIBlockElement::CheckFields < CIBlockElement::Update
-	/home/srv34072/matras.seomagic.ru/bitrix/modules/main/classes/general/module.php:730
-	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/classes/general/iblockelement.php:4318
-	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/classes/mysql/iblockelement.php:1177
-	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/admin/iblock_element_edit.php:760
-----------
-Host: www.matras.seomagic.ru
-Date: 2013-07-03 20:53:59
-Module: 1
-$ar_groupID = 424
+Date: 2013-07-04 20:54:56
+Module: 
+$arFields = Array
+(
+    [ACTIVE] => Y
+    [MODIFIED_BY] => 28
+    [IBLOCK_ID] => 6
+    [ACTIVE_FROM] => 
+    [ACTIVE_TO] => 
+    [SORT] => 400
+    [NAME] => Ìóëüòèïàêåò ìèäë
+    [CODE] => multipaket-midl
+    [TAGS] => 
+    [PREVIEW_PICTURE] => Array
+        (
+            [name] => 
+            [type] => 
+            [tmp_name] => 
+            [error] => 4
+            [size] => 0
+            [del] => 
+            [description] => 
+            [MODULE_ID] => iblock
+            [old_file] => 11067
+        )
+
+    [PREVIEW_TEXT] => Äàííàÿ óëó÷øåííàÿ ìîäåëü ïðèøëà íà ñìåíó Season mix EVS500 Îðòîïåäè÷åñêèé ìàòðàñ...
+    [PREVIEW_TEXT_TYPE] => text
+    [DETAIL_PICTURE] => Array
+        (
+            [name] => 
+            [type] => 
+            [tmp_name] => 
+            [error] => 4
+            [size] => 0
+            [del] => 
+            [description] => 
+            [MODULE_ID] => iblock
+            [old_file] => 11068
+        )
+
+    [DETAIL_TEXT] => 
+    [DETAIL_TEXT_TYPE] => text
+    [TMP_ID] => 0
+    [PROPERTY_VALUES] => Array
+        (
+            [31] => Array
+                (
+                    [0] => Array
+                        (
+                            [VALUE] => 683
+                        )
+
+                )
+
+            [37] => Array
+                (
+                    [0] => Array
+                        (
+                            [VALUE] => 
+                        )
+
+                )
+
+            [21] => Array
+                (
+                    [0] => Array
+                        (
+                            [VALUE] => 421
+                        )
+
+                )
+
+            [38] => Array
+                (
+                    [n0] => Array
+                        (
+                            [VALUE] => 
+                        )
+
+                )
+
+            [36] => Array
+                (
+                    [nundefined] => Array
+                        (
+                            [name] => 
+                            [type] => 
+                            [tmp_name] => 
+                            [error] => 4
+                            [size] => 0
+                        )
+
+                )
+
+        )
+
+    [IBLOCK_SECTION] => Array
+        (
+            [0] => 421
+            [1] => 361
+        )
+
+    [XML_ID] => 11017
+    [WF] => N
+    [WF_NEW] => 
+    [SEARCHABLE_CONTENT] => ÌÓËÜÒÈÏÀÊÅÒ ÌÈÄË
+ÄÀÍÍÀß ÓËÓ×ØÅÍÍÀß ÌÎÄÅËÜ ÏÐÈØËÀ ÍÀ ÑÌÅÍÓ SEASON MIX EVS500 ÎÐÒÎÏÅÄÈ×ÅÑÊÈÉ ÌÀÒÐÀÑ...
+
+    [IBLOCK_SECTION_ID] => 
+    [ID] => 11017
+)
+
     CheckGoodsFields::CheckGoodsFieldsTrademark < call_user_func_array < ExecuteModuleEventEx < CAllIBlockElement::CheckFields < CIBlockElement::Update
 	/home/srv34072/matras.seomagic.ru/bitrix/modules/main/classes/general/module.php:730
 	/home/srv34072/matras.seomagic.ru/bitrix/modules/iblock/classes/general/iblockelement.php:4318

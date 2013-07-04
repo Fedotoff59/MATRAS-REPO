@@ -1,5 +1,5 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
-<div class="box">
+<div class="catalog-compare-list">
 <a name="compare_list"></a>
 <?if(count($arResult)>0):?>
 	<form action="<?=$arParams["COMPARE_URL"]?>" method="get">
@@ -24,4 +24,3 @@
 	</form>
 <?endif;?>
 </div>
-<div class="clear_fix"></div>

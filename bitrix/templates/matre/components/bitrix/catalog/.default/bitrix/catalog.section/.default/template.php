@@ -18,7 +18,6 @@ $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::Get
         <div class="text">
             <?=$arElement["PREVIEW_TEXT"]?>
         </div>
-        <?if($arResult["bDisplayPrices"]):?>
             <?foreach($arElement["PRICES"] as $code=>$arPrice):?>
                 <?if($arPrice["CAN_ACCESS"]):?>			
                     <?if($arPrice["DISCOUNT_VALUE"] < $arPrice["VALUE"]):?>
@@ -28,7 +27,6 @@ $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::Get
                     <?endif?>
                 <?endif;?>
             <?endforeach;?>
-        <?endif;?>
     </div>
     <button type="submit" class="cart"><?echo GetMessage("CATALOG_BUY")?></button>
     <div class="hd">
@@ -62,7 +60,7 @@ $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::Get
             <div class="link">
                 <a href="<?=$arElement['BUY_URL']?>" class="click" id="buyoneclick_<?=$arElement['ID']?>" rel="nofollow"><i></i>КУПИТЬ В 1 КЛИК</a><br/>
                 <?if($arParams["DISPLAY_COMPARE"]):?>
-                    <a href="<?echo $arElement["COMPARE_URL"]?>" rel="nofollow" class="compare"><i></i><?echo GetMessage("CATALOG_COMPARE")?></a><br/>
+                    <a href="<?echo $arElement["COMPARE_URL"]?>" rel="nofollow" class="compare" id="compare_<?=$arElement['ID']?>"><i></i><?echo GetMessage("CATALOG_COMPARE")?></a><br/>
                 <?endif;?>
                 <a href="/articles/credit.php" class="credit"><i></i>Купить в кредит</a>
             </div>

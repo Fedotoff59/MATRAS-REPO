@@ -13,7 +13,8 @@ BX.ready(function() {
         $("#price_" + el_id[1]).text(new_price);
         var form_action = $("#buyform_" + el_id[1]).attr("action");
         var buyoneclick_action = $("#buyoneclick_" + el_id[1]).attr("href");
-        var ar_action = [form_action, buyoneclick_action];
+        var compare_action = $("#compare_" + el_id[1]).attr("href");
+        var ar_action = [form_action, buyoneclick_action, compare_action];
         jQuery.each(ar_action, function(i) {            
             var param_action = $.url(this);
             var replace_id = param_action.param('id');
@@ -21,8 +22,9 @@ BX.ready(function() {
             action_url = action_url.replace(replace_id, offer_price_id[1]);
             ar_action[i] = action_url;
         });
-        var form_action = $("#buyform_" + el_id[1]).attr("action", ar_action[0]);
-        var buyoneclick_action = $("#buyoneclick_" + el_id[1]).attr("href", ar_action[1]);
+        $("#buyform_" + el_id[1]).attr("action", ar_action[0]);
+        $("#buyoneclick_" + el_id[1]).attr("href", ar_action[1]);
+        $("#compare_" + el_id[1]).attr("href", ar_action[2]);
       });
 })
 .change();

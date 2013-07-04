@@ -2,6 +2,23 @@
 
 <?if($arParams["SHOW_TOP_ELEMENTS"]!="N"):?>
 
+<div id="content" class="catalog">
+    <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", ".default", array(), false)?>	
+<?if($arParams["USE_COMPARE"]=="Y"):?>
+<?$APPLICATION->IncludeComponent(
+	"bitrix:catalog.compare.list",
+	"",
+	Array(
+		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
+		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
+		"NAME" => $arParams["COMPARE_NAME"],
+		"DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["element"],
+		"COMPARE_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["compare"],
+	),
+	$component
+);?>
+<?endif?>
+<div class="listing">
 <?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.top",
 	"",
@@ -43,4 +60,7 @@
 	),
 $component
 );?>
+</div>
+</div>
+    
 <?endif?>
