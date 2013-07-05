@@ -14,7 +14,7 @@
                 <?=$arItem["PREVIEW_TEXT"]?>
             </div>
             <div class="price">
-                <?=$arItem["PRICE"]?> руб.
+                от <?=$arItem["PRICE"]?> руб.
             </div>
         </li>
     <?endforeach?>                            

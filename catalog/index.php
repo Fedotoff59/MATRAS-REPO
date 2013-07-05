@@ -3,97 +3,37 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Каталог");
 ?>
 <div id="sidebar">
-	
-	<div class="widget filter">
-		
-		<div class="sub">
-			<h3>Подбор по параметрам</h3>
-		</div>
-		
-		<div class="item">
-			<div class="level">Размер матраса</div>
-			<select name="">
-				<option>80 x 200 мм</option>
-				<option>80 x 200 мм</option>
-				<option>80 x 200 мм</option>
-				<option>80 x 200 мм</option>
-				<option>80 x 200 мм</option>
-				<option>80 x 200 мм</option>
-			</select>
-		</div>
-		
-		<div class="item" id="price">
-			<div class="level">Цена</div>
-			от:&nbsp;<input type="text" name="" id="start" value="200000"/>&nbsp;до:&nbsp;<input type="text" name="" id="end" value="2000000"/>
-			<div class="box"></div>
-		</div>
-		
-		<div class="item">
-			<div class="level">Бренд</div>
-			<div class="li">
-				<label><input type="checkbox" name="" checked="checked"/> Lonax Premium</label>
-			</div>
-			<div class="li">
-				<label><input type="checkbox" name=""/> ASKONA</label>
-			</div>
-			<div class="li">
-				<label><input type="checkbox" name=""/> Орматек</label>
-			</div>
-			<div class="li">
-				<label><input type="checkbox" name=""/> Промтекс-ориент</label>
-			</div>
-			<div class="">
-				<label><input type="checkbox" name=""/> Все</label>
-			</div>
-		</div>
-		
-		<div class="item">
-			<div class="level">Основа матраса</div>
-			<select name="">
-				<option>Пружинная</option>
-				<option>Пружинная</option>
-				<option>Пружинная</option>
-				<option>Пружинная</option>
-				<option>Пружинная</option>
-				<option>Пружинная</option>
-				<option>Пружинная</option>
-			</select>
-		</div>
-		
-		<div class="bt">
-			<button type="submit">Показать 25 товаров</button>
-		</div>
-		
-	</div><!-- .filter -->
-	
-	<div class="widget cat_list">
-		
-<?$APPLICATION->IncludeComponent("bitrix:catalog.section.list","tree",
-Array(
-		"IBLOCK_TYPE" => "catalog",
-		"IBLOCK_ID" => "6",
-		"SECTION_ID" => $_REQUEST["SECTION_ID"],
-		"SECTION_CODE" => "",
-		"SECTION_URL" => "",
-		"COUNT_ELEMENTS" => "N",
-		"TOP_DEPTH" => "2",
-		"SECTION_FIELDS" => "",
-		"SECTION_USER_FIELDS" => "",
-		"ADD_SECTIONS_CHAIN" => "N",
-		"CACHE_TYPE" => "N",
-		"CACHE_TIME" => "36000000",
-		"CACHE_NOTES" => "",
-		"CACHE_GROUPS" => "Y"
-	)		
+<?$APPLICATION->IncludeFile(
+    "/include/left_sidebar.php",
+    Array(),
+    Array("MODE"=>"text","NAME"=>"Левая колонка")
 );?>
-		
-	</div><!-- .cat_list -->
 </div><!-- #sidebar -->
 
         
 	
 	
-    
+    <?
+    if(isset($_GET['CATALOGFILTER']) && $_GET['CATALOGFILTER'] == 'Y'):
+    /** START SMART FILTER  **/
+    global $arSmartFilter;
+    // Start matrebasefilter
+    if(isset($_POST['matrebase']) && ($_POST['matrebase'] != 'Не важно')) {
+        $arSmartFilter['PROPERTY']['MATREBASE_VALUE'] = $_POST['matrebase'];
+    }
+    // Start Brand Filter
+    $arBFilter = Array('IBLOCK_ID' => 7, 'ACTIVE'=>'Y');
+    $db_list = CIBlockSection::GetList(false, $arBFilter, true);
+    while($ar_trademarks = $db_list->GetNext())
+    {
+        $TID = $ar_trademarks["ID"];
+        if(isset($_POST['brand_'.$TID]) && $_POST['brand_'.$TID] == 'on')
+            $arBrandFilter[] = $TID;
+    }
+    $arSmartFilter['PROPERTY']['TRADEMARK'] = $arBrandFilter;
+    /** END SMART FILTER  **/
+    endif;
+    ?>
 	
     <?$APPLICATION->IncludeComponent("bitrix:catalog", ".default", array(
 	"IBLOCK_TYPE" => "catalog",
@@ -118,14 +58,15 @@ Array(
 	"SET_STATUS_404" => "Y",
 	"USE_ELEMENT_COUNTER" => "Y",
 	"USE_FILTER" => "Y",
-	"FILTER_NAME" => "arrCatalogFilter",
+	"FILTER_NAME" => "arSmartFilter",
 	"FILTER_FIELD_CODE" => array(
-		0 => "",
+		0 => "ID",
 		1 => "",
 	),
 	"FILTER_PROPERTY_CODE" => array(
-		0 => "",
-		1 => "",
+		0 => "TRADEMARK",
+		1 => "MATREBASE",
+		2 => "",
 	),
 	"FILTER_PRICE_CODE" => array(
 	),
@@ -187,12 +128,12 @@ Array(
 		2 => "WIDTH",
 	),
 	"SHOW_TOP_ELEMENTS" => "Y",
-	"TOP_ELEMENT_COUNT" => "9",
+	"TOP_ELEMENT_COUNT" => $count_elements,
 	"TOP_LINE_ELEMENT_COUNT" => "3",
 	"TOP_ELEMENT_SORT_FIELD" => "sort",
 	"TOP_ELEMENT_SORT_ORDER" => "asc",
 	"TOP_PROPERTY_CODE" => array(
-		0 => "",
+		0 => "MATREBASE",
 		1 => "",
 	),
 	"TOP_OFFERS_FIELD_CODE" => array(
@@ -226,8 +167,11 @@ Array(
 		1 => "",
 	),
 	"LIST_OFFERS_PROPERTY_CODE" => array(
-		0 => "",
-		1 => "",
+		0 => "CML2_LINK",
+		1 => "HEIGHT",
+		2 => "LENGTH",
+		3 => "WIDTH",
+		4 => "",
 	),
 	"LIST_OFFERS_LIMIT" => "5",
 	"DETAIL_PROPERTY_CODE" => array(

@@ -58,14 +58,6 @@ $(document).ready(function(){
 		style: 'dropdown', transferClasses: true
 	});
 	
-	$('#price .box').slider({
-		range: true, min: 0, max: 3000000, values: [200000, 2000000], slide: function(event, ui) {
-			
-			$('#price #start').val(ui.values[0]);
-			$('#price #end').val(ui.values[1]);
-		}
-	});
-	
 	$('#slider, .widget.sert .slider').okSlider();
 	$('#popular').okSlider({visible: 4});
 	$('#developer').okSlider({visible: 5});

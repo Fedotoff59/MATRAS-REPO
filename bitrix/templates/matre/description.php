@@ -1,1 +1,1 @@
-<?$arTemplate = array("NAME"=>"Матрасы", "DESCRIPTION"=>"");?>
+<?$arTemplate = array("NAME"=>"Матрасы - главная", "DESCRIPTION"=>"");?>
