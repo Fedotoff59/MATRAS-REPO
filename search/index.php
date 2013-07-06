@@ -1,7 +1,11 @@
-<?
-require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
-$APPLICATION->SetTitle("");
-?>
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");?>
+<div id="sidebar">
+<?$APPLICATION->IncludeFile(
+    "/include/left_sidebar.php",
+    Array(),
+    Array("MODE"=>"text","NAME"=>"Левая колонка")
+);?>
+</div><!-- #sidebar -->
 <?$APPLICATION->IncludeComponent("bitrix:catalog.search", ".default", array(
 	"IBLOCK_TYPE" => "catalog",
 	"IBLOCK_ID" => "6",

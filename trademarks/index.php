@@ -51,7 +51,7 @@ $APPLICATION->IncludeComponent("bitrix:catalog.sections.top", "trademarks", arra
 	),
 	"SECTION_URL" => "",
 	"DETAIL_URL" => "",
-	"BASKET_URL" => "/personal/basket.php",
+	"BASKET_URL" => "/personal/cart/",
 	"ACTION_VARIABLE" => "action",
 	"PRODUCT_ID_VARIABLE" => "id",
 	"PRODUCT_QUANTITY_VARIABLE" => "quantity",

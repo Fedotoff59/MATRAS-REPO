@@ -1,45 +1,73 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
-<?if($arParams["DISPLAY_TOP_PAGER"]):?>
-	<?=$arResult["NAV_STRING"]?><br />
-<?endif;?>
-<div class="catalog">
 
-<div class="production form">
-	<ul>
-		<?foreach($arResult["ITEMS"] as $cell=>$arElement):?>
-		<?
-		$this->AddEditAction($arElement['ID'], $arElement['EDIT_LINK'], CIBlock::GetArrayByID($arParams["IBLOCK_ID"], "ELEMENT_EDIT"));
-		$this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::GetArrayByID($arParams["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BCS_ELEMENT_DELETE_CONFIRM')));
-		?>
-		<li<?if ($cell>0 && $cell%5==0):?> class="last"<?endif;?> id="<?=$this->GetEditAreaId($arElement['ID']);?>">
-			<div class="img">
-					<?if(is_array($arElement["PREVIEW_PICTURE"])):?>
-				<a href="<?=$arElement["DETAIL_PAGE_URL"]?>"><img src="<?=$arElement["PREVIEW_PICTURE"]["SRC"]?>" width="<?=$arElement["PREVIEW_PICTURE"]["WIDTH"]?>" height="<?=$arElement["PREVIEW_PICTURE"]["HEIGHT"]?>" alt="<?=$arElement["NAME"]?>" title="<?=$arElement["NAME"]?>" /></a>
-					<?endif?>
-			</div>
-			<div class="title">
-				<a href="<?=$arElement["DETAIL_PAGE_URL"]?>"><?=$arElement["NAME"]?></a>
-			</div>
-			<div class="price">
-				<span><?=FormatCurrency($arElement["PRICES"]["BASE"]["VALUE"])?></span> руб.
-                                <form action="<?=POST_FORM_ACTION_URI?>" method="post" enctype="multipart/form-data">
-				<div class="in">
-					<input type="text" name="<?echo $arParams["PRODUCT_QUANTITY_VARIABLE"]?>" value="1"/>&nbsp;шт.&nbsp;&nbsp;
-					<input type="hidden" name="<?echo $arParams["ACTION_VARIABLE"]?>" value="BUY">
-                                        <input type="hidden" name="<?echo $arParams["PRODUCT_ID_VARIABLE"]?>" value="<?echo $arElement["ID"]?>">
-					<button type="submit" name="<?echo $arParams["ACTION_VARIABLE"]."ADD2BASKET"?>">В корзину</button>
-				</div>
-                                </form>
-			</div>
-			<div class="line"></div>
-		</li>
+<ul>
+<?foreach($arResult["ITEMS"] as $cell=>$arElement):?>
+<?if(is_array($arElement)):?>
+<?
+$this->AddEditAction($arElement['ID'], $arElement['EDIT_LINK'], CIBlock::GetArrayByID($arElement["IBLOCK_ID"], "ELEMENT_EDIT"));
+$this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::GetArrayByID($arElement["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BCT_ELEMENT_DELETE_CONFIRM')));
+?>
+<li>
+    <div class="info">
+        <?if(is_array($arElement["PREVIEW_PICTURE"])):?>
+        <div class="img">
+            <a href="<?=$arElement["DETAIL_PAGE_URL"]?>"><img border="0" src="<?=$arElement["PREVIEW_PICTURE"]["SRC"]?>" width="<?=$arElement["PREVIEW_PICTURE"]["WIDTH"]?>" height="<?=$arElement["PREVIEW_PICTURE"]["HEIGHT"]?>" alt="<?=$arElement["NAME"]?>" title="<?=$arElement["NAME"]?>" /></a>
+        </div>
+        <?endif?>
+        <a href="<?=$arElement["DETAIL_PAGE_URL"]?>"><?=$arElement["NAME"]?></a>
+        <div class="text">
+            <?=$arElement["PREVIEW_TEXT"]?>
+        </div>
+            <?foreach($arElement["PRICES"] as $code=>$arPrice):?>
+                <?if($arPrice["CAN_ACCESS"]):?>			
+                    <?if($arPrice["DISCOUNT_VALUE"] < $arPrice["VALUE"]):?>
+                        <s><?=$arPrice["PRINT_VALUE"]?></s> <div class="price"><?=$arPrice["PRINT_DISCOUNT_VALUE"]?></div>
+                    <?else:?>
+                        <div class="price" id="price_<?=$arElement["ID"]?>"><?=$arPrice["PRINT_VALUE"]?></div>
+                    <?endif?>
+                <?endif;?>
+            <?endforeach;?>
+    </div>
+    <button type="submit" class="cart"><?echo GetMessage("CATALOG_BUY")?></button>
+    <div class="hd">
+        <div class="in">                
+            <form action="<?=$arElement['ADD_URL']?>" id="buyform_<?=$arElement['ID']?>" method="POST">
+                <?if(is_array($arElement["OFFERS"]) && !empty($arElement["OFFERS"])):?>
+                <select class="default" id="select_<?=$arElement["ID"]?>">
+                    <?foreach($arElement["OFFERS"] as $arOffer): $i = 1;?>
+                        <?foreach($arOffer["DISPLAY_PROPERTIES"] as $pid=>$arProperty):
+                            if($i % 5 == 0 || $i == 1) 
+                                echo '<option id ="size_'.$arOffer['ID'].'">'; 
+                                else {
+                                    echo $arProperty["VALUE"];
+                                    if($i % 4 != 0) echo ' x';
+                                }?>
+                            
+                            <?if($i % 4 == 0) echo ' см</option>'; $i++?>
+                        <?endforeach?>
+                    <?endforeach?>
+		</select>
+                <?foreach($arElement["OFFERS"] as $arOffer):?>                    
+                    <?foreach($arOffer["PRICES"] as $code=>$arPrice):?>
+                        <?if($arPrice["CAN_ACCESS"]):?>
+                                <input type="hidden" id="price_<?=$arOffer['ID']?>" value="<?=$arPrice["PRINT_VALUE"]?>">
+                        <?endif;?>
+                    <?endforeach;?>
+                <?endforeach;?>
+                <?endif?>
+                <button type="submit" class="cart"><?echo GetMessage("CATALOG_BUY")?></button>
+            </form>
+            <div class="link">
+                <a href="<?=$arElement['BUY_URL']?>" class="click" id="buyoneclick_<?=$arElement['ID']?>" rel="nofollow"><i></i>КУПИТЬ В 1 КЛИК</a><br/>
+                <?if($arParams["DISPLAY_COMPARE"]):?>
+                    <a href="<?echo $arElement["COMPARE_URL"]?>" rel="nofollow" class="compare" id="compare_<?=$arElement['ID']?>"><i></i><?echo GetMessage("CATALOG_COMPARE")?></a><br/>
+                <?endif;?>
+                <a href="/articles/credit.php" class="credit"><i></i>Купить в кредит</a>
+            </div>
             
-		<?endforeach; // foreach($arResult["ITEMS"] as $arElement):?>
-
-	</ul>
-	<div class="patch"></div>
-</div><!-- .production -->
-</div>
-<?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
-	<br /><?=$arResult["NAV_STRING"]?>
+        </div>
+    </div>       
 <?endif;?>
+<?endforeach?>
+
+</ul>

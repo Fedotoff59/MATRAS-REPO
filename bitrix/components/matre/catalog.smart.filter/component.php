@@ -12,8 +12,11 @@ if (CModule::IncludeModule("iblock") && CModule::IncludeModule("catalog")):
         $arResult['FORMATED_MAX_PRICE'] = IntVal($arResult['MAX_PRICE'] - 0.05 * $arResult['MAX_PRICE']);
         $arResult['MIN_PRICE'] = min($SKUProps['PRICES']);
         $arResult['FORMATED_MIN_PRICE'] = IntVal($arResult['MIN_PRICE'] + 0.15 * $arResult['MIN_PRICE']);
-        if(isset($_POST['max_price']) && ($_POST['max_price'] != '') && isset($_POST['min_price']) && ($_POST['min_price'] != ''))
-            if(($_POST['min_price'] >= $arResult['MIN_PRICE']) && ($_POST['min_price'] < $arResult['MAX_PRICE']) && ($_POST['min_price'] < $_POST['max_price']) && ($_POST['max_price'] < $arResult['MAX_PRICE'])) {
+        if(isset($_POST['max_price']) && (IntVal($_POST['max_price']) <= $arResult['MAX_PRICE']) && isset($_POST['min_price']) && (IntVal($_POST['min_price']) >= $arResult['MIN_PRICE']))
+            if((IntVal($_POST['min_price']) >= $arResult['MIN_PRICE']) && 
+               (IntVal($_POST['min_price']) < $arResult['MAX_PRICE']) && 
+               (IntVal($_POST['min_price']) <= IntVal($_POST['max_price'])) && 
+               (IntVal($_POST['max_price']) <= $arResult['MAX_PRICE'])) {
                 $arResult['FORMATED_MAX_PRICE'] = $_POST['max_price'];
                 $arResult['FORMATED_MIN_PRICE'] = $_POST['min_price'];
             }   
@@ -41,7 +44,7 @@ if (CModule::IncludeModule("iblock") && CModule::IncludeModule("catalog")):
         asort($arResult['MATREBASE']);
         //echo '<pre>'; print_r($_GET); echo '</pre>';
         //echo '<pre>'; print_r($_POST); echo '</pre>';
-        //echo '<pre>'; print_r($arResult['CHECKED_BARNDS']); echo '</pre>';
+        //echo '<pre>'; print_r($arResult); echo '</pre>';
         $this->IncludeComponentTemplate();
 endif;
 ?>

@@ -9,30 +9,9 @@ $APPLICATION->SetTitle("Каталог");
     Array("MODE"=>"text","NAME"=>"Левая колонка")
 );?>
 </div><!-- #sidebar -->
-
-        
-	
-	
     <?
-    if(isset($_GET['CATALOGFILTER']) && $_GET['CATALOGFILTER'] == 'Y'):
-    /** START SMART FILTER  **/
-    global $arSmartFilter;
-    // Start matrebasefilter
-    if(isset($_POST['matrebase']) && ($_POST['matrebase'] != 'Не важно')) {
-        $arSmartFilter['PROPERTY']['MATREBASE_VALUE'] = $_POST['matrebase'];
-    }
-    // Start Brand Filter
-    $arBFilter = Array('IBLOCK_ID' => 7, 'ACTIVE'=>'Y');
-    $db_list = CIBlockSection::GetList(false, $arBFilter, true);
-    while($ar_trademarks = $db_list->GetNext())
-    {
-        $TID = $ar_trademarks["ID"];
-        if(isset($_POST['brand_'.$TID]) && $_POST['brand_'.$TID] == 'on')
-            $arBrandFilter[] = $TID;
-    }
-    $arSmartFilter['PROPERTY']['TRADEMARK'] = $arBrandFilter;
-    /** END SMART FILTER  **/
-    endif;
+    if(isset($_GET['CATALOGFILTER']) && $_GET['CATALOGFILTER'] == 'Y')
+        $APPLICATION->IncludeComponent("matre:catalog.filter.set", "", array(), false);
     ?>
 	
     <?$APPLICATION->IncludeComponent("bitrix:catalog", ".default", array(
@@ -82,20 +61,16 @@ $APPLICATION->SetTitle("Каталог");
 	"USE_COMPARE" => "Y",
 	"COMPARE_NAME" => "CATALOG_COMPARE_LIST",
 	"COMPARE_FIELD_CODE" => array(
-		0 => "ID",
-		1 => "NAME",
-		2 => "PREVIEW_TEXT",
-		3 => "PREVIEW_PICTURE",
-		4 => "DETAIL_TEXT",
-		5 => "SHOW_COUNTER",
-		6 => "",
+		0 => "NAME",
+		1 => "PREVIEW_TEXT",
+		2 => "PREVIEW_PICTURE",
+		3 => "",
 	),
 	"COMPARE_PROPERTY_CODE" => array(
 		0 => "TRADEMARK",
 		1 => "COLLECTION",
 		2 => "MATREBASE",
-		3 => "POPULAR",
-		4 => "",
+		3 => "",
 	),
 	"COMPARE_OFFERS_FIELD_CODE" => array(
 		0 => "",
@@ -186,10 +161,11 @@ $APPLICATION->SetTitle("Каталог");
 		1 => "",
 	),
 	"DETAIL_OFFERS_PROPERTY_CODE" => array(
-		0 => "HEIGHT",
-		1 => "LENGTH",
-		2 => "WIDTH",
-		3 => "",
+		0 => "CML2_LINK",
+		1 => "HEIGHT",
+		2 => "LENGTH",
+		3 => "WIDTH",
+		4 => "",
 	),
 	"LINK_IBLOCK_TYPE" => "",
 	"LINK_IBLOCK_ID" => "",

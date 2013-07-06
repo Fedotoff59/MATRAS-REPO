@@ -57,7 +57,7 @@ class CSKUProps {
         if(CModule::IncludeModule("catalog")):
         $arSelect = Array("ID", "PROPERTY_CML2_LINK", "PROPERTY_WIDTH", "PROPERTY_HEIGHT", "PROPERTY_LENGTH");
         if(($PRODUCT_ID !== false) && ($PRODUCT_ID > 0))
-            $arFilter = Array("IBLOCK_ID" => 13, "ACTIVE" => "Y", "PROPERTY_CML2_LINK" => $PRODUCT_ID);
+            $arFilter = Array("IBLOCK_ID" => 13, "ACTIVE" => "Y", "ID" => $PRODUCT_ID);
             else $arFilter = Array("IBLOCK_ID" => 13, "ACTIVE" => "Y");
         $res = CIBlockElement::GetList(Array(), $arFilter, false, false, $arSelect);
         while ($ob = $res->GetNextElement()) {
@@ -66,9 +66,11 @@ class CSKUProps {
             $arPrices[] = floatval($ar_res['PRICE']);
             $stSizes = $arOfferFields['PROPERTY_HEIGHT_VALUE'].' x '.$arOfferFields['PROPERTY_LENGTH_VALUE'].' x '.$arOfferFields['PROPERTY_WIDTH_VALUE'].' см';
             $arFormatSizes[] = $stSizes;
+            $arParentProductLink[] = $arOfferFields['PROPERTY_CML2_LINK_VALUE'];
         }
         $SKUProps['PRICES'] = $arPrices;
         $SKUProps['FORMAT_SIZES'] = $arFormatSizes;
+        $SKUProps['CML2_LINK'] = $arParentProductLink;
         endif;
         return $SKUProps;
     }

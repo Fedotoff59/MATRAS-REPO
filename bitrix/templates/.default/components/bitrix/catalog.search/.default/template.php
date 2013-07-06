@@ -1,4 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();?>
+<div id="content" class="catalog">
+    <?$APPLICATION->IncludeComponent("bitrix:breadcrumb", ".default", array(), false)?>	
 <?
 $arElements = $APPLICATION->IncludeComponent(
 	"bitrix:search.page",
@@ -24,8 +26,9 @@ $arElements = $APPLICATION->IncludeComponent(
 		"PAGER_TEMPLATE" => "N",
 	),
 	$component
-);
-if (is_array($arElements) && !empty($arElements))
+);?>
+  <div class="listing">  
+<?if (is_array($arElements) && !empty($arElements))
 {
 		global $searchFilter;
 		$searchFilter = array(
@@ -44,7 +47,13 @@ if (is_array($arElements) && !empty($arElements))
 			"PROPERTY_CODE" => $arParams["PROPERTY_CODE"],
 			"OFFERS_CART_PROPERTIES" => $arParams["OFFERS_CART_PROPERTIES"],
 			"OFFERS_FIELD_CODE" => $arParams["OFFERS_FIELD_CODE"],
-			"OFFERS_PROPERTY_CODE" => $arParams["OFFERS_PROPERTY_CODE"],
+			"OFFERS_PROPERTY_CODE" => array(
+		0 => "CML2_LINK",
+		1 => "HEIGHT",
+		2 => "LENGTH",
+		3 => "WIDTH",
+		4 => "",
+	),
 			"OFFERS_SORT_FIELD" => $arParams["OFFERS_SORT_FIELD"],
 			"OFFERS_SORT_ORDER" => $arParams["OFFERS_SORT_ORDER"],
 			"OFFERS_LIMIT" => $arParams["OFFERS_LIMIT"],
@@ -102,4 +111,8 @@ else
 {
 	echo GetMessage("CT_BCSE_NOT_FOUND");
 }
+
 ?>
+
+</div>
+</div><!-- #content -->
