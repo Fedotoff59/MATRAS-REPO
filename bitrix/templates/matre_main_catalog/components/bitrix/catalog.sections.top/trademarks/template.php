@@ -52,15 +52,8 @@ $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::Get
         <div class="text">
             <?=$arElement["PREVIEW_TEXT"]?>
         </div>
-            <?foreach($arElement["PRICES"] as $code=>$arPrice):?>
-                <?if($arPrice["CAN_ACCESS"]):?>			
-                    <?if($arPrice["DISCOUNT_VALUE"] < $arPrice["VALUE"]):?>
-                        <s><?=$arPrice["PRINT_VALUE"]?></s> <div class="price"><?=$arPrice["PRINT_DISCOUNT_VALUE"]?></div>
-                    <?else:?>
-                        <div class="price" id="price_<?=$arElement["ID"]?>"><?=$arPrice["PRINT_VALUE"]?></div>
-                    <?endif?>
-                <?endif;?>
-            <?endforeach;?>
+        <div class="price" id="price_<?=$arElement["ID"]?>"><?=$arPrice["PRINT_VALUE"]?></div>
+
     </div>
     <button type="submit" class="cart"><?echo GetMessage("CATALOG_BUY")?></button>
     <div class="hd">
@@ -81,7 +74,10 @@ $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::Get
                         <?endforeach?>
                     <?endforeach?>
 		</select>
-                <?foreach($arElement["OFFERS"] as $arOffer):?>                    
+                <?foreach($arElement["OFFERS"] as $arOffer):?>
+                    <input type="hidden" id="buyurl_<?=$arOffer['ID']?>" value="<?=$arOffer["BUY_URL"]?>">
+                    <input type="hidden" id="addurl_<?=$arOffer['ID']?>" value="<?=$arOffer["ADD_URL"]?>">
+                    <input type="hidden" id="compareurl_<?=$arOffer['ID']?>" value="/catalog/?action=ADD_TO_COMPARE_LIST&id=<?=$arOffer['ID']?>">
                     <?foreach($arOffer["PRICES"] as $code=>$arPrice):?>
                         
                                 <input type="hidden" id="price_<?=$arOffer['ID']?>" value="<?=$arPrice["PRINT_VALUE"]?>">

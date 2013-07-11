@@ -63,7 +63,10 @@ if($arParams['ADD_SECTIONS_CHAIN'] && !empty($arResult['NAME']))
                     <?endforeach?>
 		</select>
                 </div>
-                <?foreach($arResult["OFFERS"] as $arOffer):?>                    
+                <?foreach($arResult["OFFERS"] as $arOffer):?>
+                    <input type="hidden" id="buyurl_<?=$arOffer['ID']?>" value="<?=$arOffer["BUY_URL"]?>">
+                    <input type="hidden" id="addurl_<?=$arOffer['ID']?>" value="<?=$arOffer["ADD_URL"]?>">
+                    <input type="hidden" id="compareurl_<?=$arOffer['ID']?>" value="<?=$arOffer["COMPARE_URL"]?>">
                     <?foreach($arOffer["PRICES"] as $code=>$arPrice):?>
                         <?if($arPrice["CAN_ACCESS"]):?>
                                 <input type="hidden" id="price_<?=$arOffer['ID']?>" value="<?=$arPrice["PRINT_VALUE"]?>">
@@ -93,8 +96,10 @@ if($arParams['ADD_SECTIONS_CHAIN'] && !empty($arResult['NAME']))
 		
 		<div class="clear_fix"></div>
 	</div><!-- .block -->
-        <h3>Структура</h3>
-	<div class="structure">
+        <?if(isset($arResult['DETAIL_TEXT']) && !empty($arResult['DETAIL_TEXT'])):?>
+            <h3>Структура</h3>
+	<?endif;?>
+        <div class="structure">
             <?=$arResult['DETAIL_TEXT']?>
         </div>
 </div>

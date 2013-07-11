@@ -18,11 +18,12 @@
 		<div class="sub">
 			<h3>Подбор по параметрам</h3>
 		</div>
-		<form action="/catalog/?CATALOGFILTER=Y" method="POST">
+		<form action="/catalog/" method="GET">
+                <input type="hidden" name="CATALOGFILTER" value="Y">
 		<div class="item">
 			<div class="level">Размер матраса</div>
 			<select name="size">
-                            <option>Не важно</option>
+                            <option>Неважно</option>
                             <?foreach ($arResult['FORMAT_SIZSES'] as $selflag => $stSize):?>
 				<?if(isset($arResult['SELECTED_SIZE']) && ($arResult['SELECTED_SIZE'] == $selflag)):?>
                                     <option selected><?=$stSize?></option>
@@ -51,7 +52,7 @@
 		<div class="item">
 			<div class="level">Основа матраса</div>
 			<select name="matrebase">
-				<option id="base_0">Не важно</option>
+				<option id="base_0">Неважно</option>
                                 <?foreach($arResult['MATREBASE'] as $id => $MatreBase):?>
                                 <?if(isset($arResult['SELECTED_BASE']) && ($arResult['SELECTED_BASE'] == $id)):?>
                                     <option id="base_<?=$id?>" selected><?=$MatreBase?></option>

@@ -25,16 +25,16 @@ class CheckGoodsFields
             // Смотрим в каком разделе у нас лежит коллекция
             $db_groups = CIBlockElement::GetElementGroups($COLLECTION_ID, true);
             $ar_group = $db_groups->Fetch();
-            if ($ar_group["ID"] != $SECTION_ID) {
+            //if ($ar_group["ID"] != $SECTION_ID) {
                 // Если привязка к разделу (торговой марке) и родительский раздел коллекции не совпадают
                 // не даем сохранять
                 //AddMessage2Log('$arFields = '.print_r($arFields, true),'');
                 //AddMessage2Log('$SECTION_ID = '.print_r($SECTION_ID, true),'');
                 //AddMessage2Log('$ar_group = '.print_r($ar_group, true),'');
-                global $APPLICATION;
-                $APPLICATION->throwException("Выбранная коллекция не соответствует торговой марке.");
-                return false;
-            }
+             //   global $APPLICATION;
+             //   $APPLICATION->throwException("Выбранная коллекция не соответствует торговой марке.");
+             //   return false;
+            //}
             
         }
         // Если не установлены торговые предложения - деактивируем элемент

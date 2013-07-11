@@ -50,7 +50,9 @@ $this->AddDeleteAction($arElement['ID'], $arElement['DELETE_LINK'], CIBlock::Get
                         <?endforeach?>
                     <?endforeach?>
 		</select>
-                <?foreach($arElement["OFFERS"] as $arOffer):?>                    
+                <?foreach($arElement["OFFERS"] as $arOffer):?>
+                    <input type="hidden" id="buyurl_<?=$arOffer['ID']?>" value="<?=$arOffer["BUY_URL"]?>">
+                    <input type="hidden" id="addurl_<?=$arOffer['ID']?>" value="<?=$arOffer["ADD_URL"]?>">
                     <?foreach($arOffer["PRICES"] as $code=>$arPrice):?>
                         <?if($arPrice["CAN_ACCESS"]):?>
                                 <input type="hidden" id="price_<?=$arOffer['ID']?>" value="<?=$arPrice["PRINT_VALUE"]?>">

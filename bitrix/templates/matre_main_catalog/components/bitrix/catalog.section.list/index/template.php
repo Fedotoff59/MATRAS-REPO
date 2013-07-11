@@ -44,7 +44,7 @@ foreach($arResult["SECTIONS"] as $i => $arSection):
 <li>
     <div class="title">Перейти в каталог</div>
     <div class="img">
-        <img src="<?=SITE_TEMPLATE_PATH?>/files/cat-6.png" alt=""/>
+        <img src="/files/cat-6.png" alt=""/>
     </div>
     <a href="/catalog/">Смотреть все товары >></a>
 </li>

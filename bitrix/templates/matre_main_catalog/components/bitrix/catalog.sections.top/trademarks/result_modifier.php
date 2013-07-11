@@ -57,7 +57,7 @@ foreach($arResult["SECTIONS"] as &$arSection):
 					,"N"
 					,"RUB"
 				);
-				/*foreach($arOffers as $arOffer)
+				foreach($arOffers as &$arOffer)
 				{
 					$arOffer["BUY_URL"] = htmlspecialcharsbx($APPLICATION->GetCurPageParam($arParams["ACTION_VARIABLE"]."=BUY&".$arParams["PRODUCT_ID_VARIABLE"]."=".$arOffer["ID"], array($arParams["PRODUCT_ID_VARIABLE"], $arParams["ACTION_VARIABLE"])));
 					$arOffer["ADD_URL"] = htmlspecialcharsbx($APPLICATION->GetCurPageParam($arParams["ACTION_VARIABLE"]."=ADD2BASKET&".$arParams["PRODUCT_ID_VARIABLE"]."=".$arOffer["ID"], array($arParams["PRODUCT_ID_VARIABLE"], $arParams["ACTION_VARIABLE"])));
@@ -65,10 +65,10 @@ foreach($arResult["SECTIONS"] as &$arSection):
 					$arOffer["SUBSCRIBE_URL"] = htmlspecialcharsbx($APPLICATION->GetCurPageParam($arParams["ACTION_VARIABLE"]."=SUBSCRIBE_PRODUCT&".$arParams["PRODUCT_ID_VARIABLE"]."=".$arOffer["ID"], array($arParams["PRODUCT_ID_VARIABLE"], $arParams["ACTION_VARIABLE"])));
 
 					//$arResult["OFFERS"][] = $arOffer;
-				}*/
+				}
 			
             $arElement["OFFERS"] = $arOffers;
         endforeach;
     endif;
 endforeach;
-?>      
+?>

@@ -6,18 +6,16 @@ $curPage = $APPLICATION->GetCurPage(true);
 <?$APPLICATION->ShowHead();?>
 <title><?$APPLICATION->ShowTitle()?></title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<link href="<?=SITE_TEMPLATE_PATH?>/css/fonts.css" rel="stylesheet" />
-<link href="<?=SITE_TEMPLATE_PATH?>/css/jquery.formstyler.css" rel="stylesheet" />
-<link href="<?=SITE_TEMPLATE_PATH?>/css/style.css" rel="stylesheet" />
+<link href="/css/fonts.css" rel="stylesheet" />
+<link href="/css/jquery.formstyler.css" rel="stylesheet" />
+<link href="/css/style.css" rel="stylesheet" />
 <!--[if lt IE 9]><link href="<?=SITE_TEMPLATE_PATH?>/css/ie.css" rel="stylesheet" /><![endif]-->
-<script src="<?=SITE_TEMPLATE_PATH?>/js/jquery-ui-1.9.1.custom.min.js"></script>
-<script src="<?=SITE_TEMPLATE_PATH?>/js/ui.select.js"></script>
-<script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.fancybox.pack.js"></script>
-<script src="<?=SITE_TEMPLATE_PATH?>/js/okSlider.js"></script>
-<script src="<?=SITE_TEMPLATE_PATH?>/js/jquery.formstyler.js"></script>
-<script src="<?=SITE_TEMPLATE_PATH?>/js/purl.js"></script>
-<script src="<?=SITE_TEMPLATE_PATH?>/js/main.js"></script>
-<script type="text/javascript" src="/bitrix/templates/.default/js/admin.js"></script>
+<script src="/js/jquery-ui-1.9.1.custom.min.js"></script>
+<script src="/js/ui.select.js"></script>
+<script src="/js/jquery.fancybox.pack.js"></script>
+<script src="/js/okSlider.js"></script>
+<script src="/js/jquery.formstyler.js"></script>
+<script src="/js/main.js"></script>
 </head>
 <body>
 <?$APPLICATION->ShowPanel()?>
@@ -68,21 +66,22 @@ $curPage = $APPLICATION->GetCurPage(true);
                     	Array("MODE"=>"text","NAME"=>"Телефон")
                     );?>
 			<a href="" class="dot" onclick="return false;">Перезвоните мне</a>
-			<div id="callback" class="form">
-				<form action="#" method="post">
-					<div class="in">
-						<div class="value">Ваше имя:</div>
-						<input type="text" name=""/>
-					</div>
-					<div class="in">
-						<div class="value">Ваш номер телефона:</div>
-						<input type="text" name=""/>
-					</div>
-					<div class="in">
-						<button type="submit">Отправить</button>
-					</div>
-				</form>
-			</div><!-- #callback -->
+			<?$APPLICATION->IncludeComponent("melcosoft:feedback", "callback", array(
+                            "EVENT_ID" => "40",
+                            "EMAIL_FIELDS" => array(),
+                            "WRITE_IBLOCK" => "N",
+                            "USE_GUEST_CAPTCHA" => "N",
+                            "FORM_ID" => "call-back",
+                            "REDIRECT_IF_SUCCESS" => "Y",
+                            "REDIRECT_URL" => "/call-back/",
+                            "AJAX_MODE" => "N",
+                            "AJAX_OPTION_JUMP" => "N",
+                            "AJAX_OPTION_STYLE" => "Y",
+                            "AJAX_OPTION_HISTORY" => "N",
+                            "AJAX_OPTION_ADDITIONAL" => ""
+                            ),
+                            false
+                        );?>
 		</div>
 		
 		<div class="worktime">
@@ -96,7 +95,7 @@ $curPage = $APPLICATION->GetCurPage(true);
 		<div class="cart">
 <?$APPLICATION->IncludeComponent("bitrix:sale.basket.basket.small","",Array(
 		"PATH_TO_BASKET" => "/personal/cart/",
-		"PATH_TO_ORDER" => "/personal/order.php"
+		"PATH_TO_ORDER" => "/personal/order/"
 	)
 );?>
 		</div>
@@ -131,8 +130,8 @@ $curPage = $APPLICATION->GetCurPage(true);
 	</div>
 	
 	<div class="search">
-		<form action="#" method="post">
-			<input type="text" name="" value="Поиск по сайту" onblur="if(this.value=='')this.value='Поиск по сайту';" onfocus="if(this.value=='Поиск по сайту'){this.value='';}"/><button type="submit"></button>
+		<form action="/search/" method="get">
+			<input type="text" name="q" value="Поиск по сайту" onblur="if(this.value=='')this.value='Поиск по сайту';" onfocus="if(this.value=='Поиск по сайту'){this.value='';}"/><button type="submit"></button>
 		</form>
 	</div>
 	

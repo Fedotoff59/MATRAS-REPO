@@ -121,6 +121,7 @@ if ($arParams["USE_GUEST_CAPTCHA"] && !$USER->IsAuthorized()) {
     $arResult["CAPTCHA_IMAGE"] = "<input type=\"hidden\" name=\"captcha_sid\" value=\"" . htmlspecialcharsbx($arResult["CAPTCHACode"]) . "\" /><img src=\"/bitrix/tools/captcha.php?captcha_sid=" . htmlspecialcharsbx($arResult["CAPTCHACode"]) . "\" width=\"180\" height=\"40\" />";
 }
 ?>
+<div id="callback" class="form">
 <form name="feedback" <? if (!empty($arParams["FORM_ID"])): ?> id="<?= $arParams["FORM_ID"] ?>"<? endif; ?> action="<?= POST_FORM_ACTION_URI ?>" method="POST" enctype="multipart/form-data">
 <?= bitrix_sessid_post() ?>
     <input type="hidden" name="fl_id" id="fl_id" value="<?= $arResult["EVENT"]["ID"] ?>" />
@@ -128,7 +129,7 @@ if ($arParams["USE_GUEST_CAPTCHA"] && !$USER->IsAuthorized()) {
     $this->IncludeComponentTemplate();
     ?>
 </form>
-
+</div><!-- #callback -->
 <?
 if ($arResult["AJAX"])
     die();

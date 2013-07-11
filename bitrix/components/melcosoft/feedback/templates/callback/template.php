@@ -21,14 +21,17 @@ if (phone==null || phone=="")
   }
 }
 </script>
-						<div class="tr">
-							<div class="value">Ваше имя:</div>
-							<input type="text" name="MS_AUTHOR"/>
-						</div>
-						<div class="tr">
-							<div class="value">Ваш номер телефона:</div>
-							<input type="text" name="MS_PHONE"/>
-						</div>
-						<div class="tr">
-							<button type="submit" onclick="return validateForm()">Отправить</button> 
-						</div>
+
+				
+					<div class="in">
+						<div class="value">Ваше имя:</div>
+						<input type="text" name="MS_AUTHOR"/>
+					</div>
+					<div class="in">
+						<div class="value">Ваш номер телефона:</div>
+						<input type="text" name="MS_PHONE"/>
+					</div>
+					<div class="in">
+						<button type="submit" onclick="return validateForm()">Отправить</button>
+					</div>
+				
